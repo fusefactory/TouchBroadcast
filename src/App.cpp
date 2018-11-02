@@ -132,16 +132,6 @@ void MultiTouchApp::setup()
 #endif
 }
 
-void MultiTouchApp::touchesBegan( TouchEvent event )
-{
-	//CI_LOG_I( event );
-
-	for( const auto &touch : event.getTouches() ) {
-		Color newColor( CM_HSV, Rand::randFloat(), 1, 1 );
-		mActivePoints.insert( make_pair( touch.getId(), TouchPoint( touch.getPos(), newColor ) ) );
-	}
-}
-
 // Unified error handler. Easiest to have a bound function in this situation,
 // since we're sending from many different places.
 void MultiTouchApp::onSendError( asio::error_code error )
@@ -169,12 +159,70 @@ void MultiTouchApp::onSendError( asio::error_code error )
 	}
 }
 
+void MultiTouchApp::touchesBegan( TouchEvent event )
+{
+  for( const auto &touch : event.getTouches() ) {
+		Color newColor( CM_HSV, Rand::randFloat(), 1, 1 );
+		mActivePoints.insert( make_pair( touch.getId(), TouchPoint( touch.getPos(), newColor ) ) );
+	}
+
+
+  // Make sure you're connected before trying to send.
+  if( ! mIsConnected )
+    return;
+
+  for( const auto &touch : event.getTouches() ) {
+    int touchid = touch.getId();
+    ivec2 pos = touch.getPos();
+
+    osc::Message msg( "/fakeTuio/down" );
+    // msg.append( "set" );
+    msg.append( (int)touchid );
+    msg.append( (float)pos.x / getWindowWidth() );
+    msg.append( (float)pos.y / getWindowHeight() );
+    msg.append( (float)0 ); // velX
+    msg.append( (float)0 ); // velY
+    msg.append( (float)0 ); // motionAccel
+    // Send the msg and also provide an error handler. If the message is important you
+    // could store it in the error callback to dispatch it again if there was a problem.
+    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+                    this, std::placeholders::_1 ) );
+
+	//CI_LOG_I( event );
+  }
+}
+
+
 void MultiTouchApp::touchesMoved( TouchEvent event )
 {
 	//CI_LOG_I( event );
 	for( const auto &touch : event.getTouches() ) {
 		mActivePoints[touch.getId()].addPoint( touch.getPos() );
 	}
+
+  // Make sure you're connected before trying to send.
+  if( ! mIsConnected )
+    return;
+
+  for( const auto &touch : event.getTouches() ) {
+    int touchid = touch.getId();
+    ivec2 pos = touch.getPos();
+
+    osc::Message msg( "/fakeTuio/move" );
+    // msg.append( "set" );
+    msg.append( (int)touchid );
+    msg.append( (float)pos.x / getWindowWidth() );
+    msg.append( (float)pos.y / getWindowHeight() );
+    msg.append( (float)0 ); // velX
+    msg.append( (float)0 ); // velY
+    msg.append( (float)0 ); // motionAccel
+    // Send the msg and also provide an error handler. If the message is important you
+    // could store it in the error callback to dispatch it again if there was a problem.
+    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+                    this, std::placeholders::_1 ) );
+
+  //CI_LOG_I( event );
+  }
 }
 
 void MultiTouchApp::touchesEnded( TouchEvent event )
@@ -185,6 +233,30 @@ void MultiTouchApp::touchesEnded( TouchEvent event )
 		mDyingPoints.push_back( mActivePoints[touch.getId()] );
 		mActivePoints.erase( touch.getId() );
 	}
+
+  // Make sure you're connected before trying to send.
+  if( ! mIsConnected )
+    return;
+
+  for( const auto &touch : event.getTouches() ) {
+    int touchid = touch.getId();
+    ivec2 pos = touch.getPos();
+
+    osc::Message msg( "/fakeTuio/up" );
+    // msg.append( "set" );
+    msg.append( (int)touchid );
+    msg.append( (float)pos.x / getWindowWidth() );
+    msg.append( (float)pos.y / getWindowHeight() );
+    msg.append( (float)0 ); // velX
+    msg.append( (float)0 ); // velY
+    msg.append( (float)0 ); // motionAccel
+    // Send the msg and also provide an error handler. If the message is important you
+    // could store it in the error callback to dispatch it again if there was a problem.
+    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+                    this, std::placeholders::_1 ) );
+
+  //CI_LOG_I( event );
+  }
 }
 
 void MultiTouchApp::mouseMove( cinder::app::MouseEvent event )
