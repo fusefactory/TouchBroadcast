@@ -24,7 +24,7 @@ using Sender = osc::SenderTcp;
 #endif
 
 const std::string destinationHost = "127.0.0.1";
-const uint16_t destinationPort = 3335;
+const uint16_t destinationPort = 3333;
 const uint16_t localPort = 10000;
 
 struct TouchPoint {
@@ -89,7 +89,7 @@ void prepareSettings( MultiTouchApp::Settings *settings )
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
 	settings->setMultiTouchEnabled( true );
-  ttsettings->setAlwaysOnTop(true);
+  settings->setAlwaysOnTop(true);
   // settings->setDisplay( ci::Display::getDisplays()[0] );
 
 	// On mobile, if you disable multitouch then touch events will arrive via mouseDown(), mouseDrag(), etc.
