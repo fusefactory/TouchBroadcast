@@ -62,7 +62,8 @@ class MultiTouchApp : public App {
   void	mouseMove( MouseEvent event ) override;
   void	mouseDrag( MouseEvent event ) override;
   void	mouseUp( MouseEvent event ) override;
-
+  void submitFakeTuio(const string &addr, int id, const ivec2 &pos);
+  void sendFakeTuio(const string &addr, int id, const ivec2 &pos);
 
 	void	touchesBegan( TouchEvent event ) override;
 	void	touchesMoved( TouchEvent event ) override;
@@ -158,6 +159,27 @@ void MultiTouchApp::onSendError( asio::error_code error )
 		quit();
 	}
 }
+void MultiTouchApp::submitFakeTuio(const string &addr, int id, const ivec2 &pos) {
+  // TODO; check if another message with the same addr/id combination is already queued,
+  // if so, remove that message (deprecated by this new message)
+  this->sendFakeTuio(addr, id, pos);
+}
+
+void MultiTouchApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
+  osc::Message msg( addr );
+  // msg.append( "set" );
+  msg.append( (int)id );
+  msg.append( (float)pos.x / getWindowWidth() );
+  msg.append( (float)pos.y / getWindowHeight() );
+  msg.append( (float)0 ); // velX
+  msg.append( (float)0 ); // velY
+  msg.append( (float)0 ); // motionAccel
+
+  // Send the msg and also provide an error handler. If the message is important you
+  // could store it in the error callback to dispatch it again if there was a problem.
+  mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+                  this, std::placeholders::_1 ) );
+}
 
 void MultiTouchApp::touchesBegan( TouchEvent event )
 {
@@ -174,21 +196,7 @@ void MultiTouchApp::touchesBegan( TouchEvent event )
   for( const auto &touch : event.getTouches() ) {
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
-
-    osc::Message msg( "/fakeTuio/down" );
-    // msg.append( "set" );
-    msg.append( (int)touchid );
-    msg.append( (float)pos.x / getWindowWidth() );
-    msg.append( (float)pos.y / getWindowHeight() );
-    msg.append( (float)0 ); // velX
-    msg.append( (float)0 ); // velY
-    msg.append( (float)0 ); // motionAccel
-    // Send the msg and also provide an error handler. If the message is important you
-    // could store it in the error callback to dispatch it again if there was a problem.
-    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
-                    this, std::placeholders::_1 ) );
-
-	//CI_LOG_I( event );
+    this->submitFakeTuio("/fakeTuio/down", touchid, pos);
   }
 }
 
@@ -207,21 +215,7 @@ void MultiTouchApp::touchesMoved( TouchEvent event )
   for( const auto &touch : event.getTouches() ) {
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
-
-    osc::Message msg( "/fakeTuio/move" );
-    // msg.append( "set" );
-    msg.append( (int)touchid );
-    msg.append( (float)pos.x / getWindowWidth() );
-    msg.append( (float)pos.y / getWindowHeight() );
-    msg.append( (float)0 ); // velX
-    msg.append( (float)0 ); // velY
-    msg.append( (float)0 ); // motionAccel
-    // Send the msg and also provide an error handler. If the message is important you
-    // could store it in the error callback to dispatch it again if there was a problem.
-    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
-                    this, std::placeholders::_1 ) );
-
-  //CI_LOG_I( event );
+    this->submitFakeTuio("/fakeTuio/move", touchid, pos);
   }
 }
 
@@ -242,20 +236,7 @@ void MultiTouchApp::touchesEnded( TouchEvent event )
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
 
-    osc::Message msg( "/fakeTuio/up" );
-    // msg.append( "set" );
-    msg.append( (int)touchid );
-    msg.append( (float)pos.x / getWindowWidth() );
-    msg.append( (float)pos.y / getWindowHeight() );
-    msg.append( (float)0 ); // velX
-    msg.append( (float)0 ); // velY
-    msg.append( (float)0 ); // motionAccel
-    // Send the msg and also provide an error handler. If the message is important you
-    // could store it in the error callback to dispatch it again if there was a problem.
-    mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
-                    this, std::placeholders::_1 ) );
-
-  //CI_LOG_I( event );
+    this->submitFakeTuio("/fakeTuio/up", touchid, pos);
   }
 }
 
