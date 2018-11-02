@@ -55,9 +55,9 @@ struct TouchPoint {
 	float			mTimeOfDeath;
 };
 
-class MultiTouchApp : public App {
+class TouchBroadcastApp : public App {
  public:
-	MultiTouchApp();
+	TouchBroadcastApp();
 	void	mouseDown( MouseEvent event ) override;
   void	mouseMove( MouseEvent event ) override;
   void	mouseDrag( MouseEvent event ) override;
@@ -84,7 +84,7 @@ class MultiTouchApp : public App {
 	bool	mIsConnected;
 };
 
-void prepareSettings( MultiTouchApp::Settings *settings )
+void prepareSettings( TouchBroadcastApp::Settings *settings )
 {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
@@ -96,12 +96,12 @@ void prepareSettings( MultiTouchApp::Settings *settings )
 //	settings->setMultiTouchEnabled( false );
 }
 
-MultiTouchApp::MultiTouchApp()
+TouchBroadcastApp::TouchBroadcastApp()
 : mSender( localPort, destinationHost, destinationPort ), mIsConnected( false )
 {
 }
 
-void MultiTouchApp::setup()
+void TouchBroadcastApp::setup()
 {
 	CI_LOG_I( "MT: " << System::hasMultiTouch() << " Max points: " << System::getMaxMultiTouchPoints() );
 
@@ -140,7 +140,7 @@ void MultiTouchApp::setup()
 
 // Unified error handler. Easiest to have a bound function in this situation,
 // since we're sending from many different places.
-void MultiTouchApp::onSendError( asio::error_code error )
+void TouchBroadcastApp::onSendError( asio::error_code error )
 {
 	if( error ) {
 		CI_LOG_E( "Error sending: " << error.message() << " val: " << error.value() );
@@ -164,13 +164,13 @@ void MultiTouchApp::onSendError( asio::error_code error )
 		quit();
 	}
 }
-void MultiTouchApp::submitFakeTuio(const string &addr, int id, const ivec2 &pos) {
+void TouchBroadcastApp::submitFakeTuio(const string &addr, int id, const ivec2 &pos) {
   // TODO; check if another message with the same addr/id combination is already queued,
   // if so, remove that message (deprecated by this new message)
   this->sendFakeTuio(addr, id, pos);
 }
 
-void MultiTouchApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
+void TouchBroadcastApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
   osc::Message msg( addr );
   // msg.append( "set" );
   msg.append( (int)id );
@@ -182,11 +182,11 @@ void MultiTouchApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
 
   // Send the msg and also provide an error handler. If the message is important you
   // could store it in the error callback to dispatch it again if there was a problem.
-  mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+  mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
                   this, std::placeholders::_1 ) );
 }
 
-void MultiTouchApp::touchesBegan( TouchEvent event )
+void TouchBroadcastApp::touchesBegan( TouchEvent event )
 {
   for( const auto &touch : event.getTouches() ) {
 		Color newColor( CM_HSV, Rand::randFloat(), 1, 1 );
@@ -209,7 +209,7 @@ void MultiTouchApp::touchesBegan( TouchEvent event )
 }
 
 
-void MultiTouchApp::touchesMoved( TouchEvent event )
+void TouchBroadcastApp::touchesMoved( TouchEvent event )
 {
 	//CI_LOG_I( event );
 	for( const auto &touch : event.getTouches() ) {
@@ -230,7 +230,7 @@ void MultiTouchApp::touchesMoved( TouchEvent event )
   }
 }
 
-void MultiTouchApp::touchesEnded( TouchEvent event )
+void TouchBroadcastApp::touchesEnded( TouchEvent event )
 {
 	//CI_LOG_I( event );
 	for( const auto &touch : event.getTouches() ) {
@@ -254,12 +254,12 @@ void MultiTouchApp::touchesEnded( TouchEvent event )
   }
 }
 
-void MultiTouchApp::mouseMove( cinder::app::MouseEvent event )
+void TouchBroadcastApp::mouseMove( cinder::app::MouseEvent event )
 {
 
 }
 
-void MultiTouchApp::mouseDown( MouseEvent event )
+void TouchBroadcastApp::mouseDown( MouseEvent event )
 {
 	// Make sure you're connected before trying to send.
 	if( ! mIsConnected )
@@ -275,11 +275,11 @@ void MultiTouchApp::mouseDown( MouseEvent event )
     msg.append( (float)0 ); // motionAccel
   	// Send the msg and also provide an error handler. If the message is important you
   	// could store it in the error callback to dispatch it again if there was a problem.
-  	mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+  	mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
   								  this, std::placeholders::_1 ) );
 }
 
-void MultiTouchApp::mouseDrag( MouseEvent event )
+void TouchBroadcastApp::mouseDrag( MouseEvent event )
 {
   // Make sure you're connected before trying to send.
   if( ! mIsConnected )
@@ -295,11 +295,11 @@ void MultiTouchApp::mouseDrag( MouseEvent event )
   msg.append( (float)0 ); // motionAccel
   // Send the msg and also provide an error handler. If the message is important you
   // could store it in the error callback to dispatch it again if there was a problem.
-  mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+  mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
                   this, std::placeholders::_1 ) );
 }
 
-void MultiTouchApp::mouseUp( MouseEvent event )
+void TouchBroadcastApp::mouseUp( MouseEvent event )
 {
 	// Make sure you're connected before trying to send.
 	if( ! mIsConnected )
@@ -311,11 +311,11 @@ void MultiTouchApp::mouseUp( MouseEvent event )
 	msg.append( (float)event.getPos().y / getWindowHeight() );
 	// Send the msg and also provide an error handler. If the message is important you
 	// could store it in the error callback to dispatch it again if there was a problem.
-	mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
+	mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
 								  this, std::placeholders::_1 ) );
 }
 
-void MultiTouchApp::keyDown( KeyEvent event )
+void TouchBroadcastApp::keyDown( KeyEvent event )
 {
 	if( event.getChar() == 'f' ) {
 		setFullScreen(!isFullScreen());
@@ -330,7 +330,7 @@ void MultiTouchApp::keyDown( KeyEvent event )
   // }
 }
 
-void MultiTouchApp::draw()
+void TouchBroadcastApp::draw()
 {
 	gl::enableAlphaBlending();
 	gl::clear( Color( 0.1f, 0.1f, 0.1f ) );
@@ -353,4 +353,4 @@ void MultiTouchApp::draw()
 		gl::drawStrokedCircle( touch.getPos(), 20 );
 }
 
-CINDER_APP( MultiTouchApp, RendererGl, prepareSettings )
+CINDER_APP( TouchBroadcastApp, RendererGl, prepareSettings )
