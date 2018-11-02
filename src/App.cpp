@@ -89,6 +89,8 @@ void prepareSettings( MultiTouchApp::Settings *settings )
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
 	settings->setMultiTouchEnabled( true );
+  ttsettings->setAlwaysOnTop(true);
+  // settings->setDisplay( ci::Display::getDisplays()[0] );
 
 	// On mobile, if you disable multitouch then touch events will arrive via mouseDown(), mouseDrag(), etc.
 //	settings->setMultiTouchEnabled( false );
@@ -309,6 +311,14 @@ void MultiTouchApp::keyDown( KeyEvent event )
 	if( event.getChar() == 'f' ) {
 		setFullScreen(!isFullScreen());
 	}
+
+  if( event.getChar() == 't' ) {
+    getWindow()->setAlwaysOnTop(!getWindow()->isAlwaysOnTop());
+  }
+
+  // if( event.getChar() == 'T' ) {
+  //   getWindow()->setAlwaysOnTop(true);
+  // }
 }
 
 void MultiTouchApp::draw()
