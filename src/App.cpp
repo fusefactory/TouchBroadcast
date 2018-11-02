@@ -32,9 +32,10 @@ struct TouchPoint {
 	TouchPoint( const vec2 &initialPt, const Color &color ) : mColor( color ), mTimeOfDeath( -1.0 )
 	{
 		mLine.push_back( initialPt );
+		lastPos = initialPt;
 	}
 
-	void addPoint( const vec2 &pt ) { mLine.push_back( pt ); }
+	void addPoint( const vec2 &pt ) { mLine.push_back( pt ); lastPos = pt; }
 
 	void draw() const
 	{
@@ -50,9 +51,12 @@ struct TouchPoint {
 
 	bool isDead() const { return getElapsedSeconds() > mTimeOfDeath; }
 
+	vec2 getLastPos() { return lastPos; }
+
 	PolyLine2f		mLine;
 	Color			mColor;
 	float			mTimeOfDeath;
+	vec2 lastPos;
 };
 
 class TouchBroadcastApp : public App {
@@ -64,7 +68,7 @@ class TouchBroadcastApp : public App {
   void	mouseUp( MouseEvent event ) override;
   void submitFakeTuio(const string &addr, int id, const ivec2 &pos);
   void sendFakeTuio(const string &addr, int id, const ivec2 &pos);
-
+	bool setPos(int id, vec2 pos);
 	void	touchesBegan( TouchEvent event ) override;
 	void	touchesMoved( TouchEvent event ) override;
 	void	touchesEnded( TouchEvent event ) override;
@@ -77,6 +81,7 @@ class TouchBroadcastApp : public App {
 
 	map<uint32_t,TouchPoint>	mActivePoints;
 	list<TouchPoint>			mDyingPoints;
+	list<int> mActiveTouchIds;
 
 	// OSC
 	void onSendError( asio::error_code error );
@@ -186,6 +191,23 @@ void TouchBroadcastApp::sendFakeTuio(const string &addr, int id, const ivec2 &po
                   this, std::placeholders::_1 ) );
 }
 
+bool TouchBroadcastApp::setPos(int id, vec2 pos) {
+	// find existing
+	auto findIter = std::find_if(mActivePoints.begin(), mActivePoints.end(), [id](auto p){ return p.first == id; });
+	bool isNew = (findIter == mActivePoints.end());
+
+	if (isNew) {
+			Color newColor( CM_HSV, Rand::randFloat(), 1, 1 );
+			mActivePoints.insert( make_pair( id, TouchPoint( pos, newColor ) ) );
+			return true;
+	}
+
+	if ((*findIter).second.getLastPos() == pos) return false; // no change
+
+	(*findIter).second.addPoint(pos);
+	return true;
+}
+
 void TouchBroadcastApp::touchesBegan( TouchEvent event )
 {
   for( const auto &touch : event.getTouches() ) {
@@ -199,12 +221,18 @@ void TouchBroadcastApp::touchesBegan( TouchEvent event )
     return;
 
   for( auto &touch : event.getTouches() ) {
-    if (touch.isHandled()) continue;
-    touch.setHandled();
+    // if (touch.isHandled()) continue;
+    // touch.setHandled();
+		int touchid = touch.getId();
 
-    int touchid = touch.getId();
-    ivec2 pos = touch.getPos();
-    this->submitFakeTuio("/fakeTuio/down", touchid, pos);
+		std::list<int>::iterator findIter = std::find(mActiveTouchIds.begin(), mActiveTouchIds.end(), touchid);
+		bool isActive = findIter != mActiveTouchIds.end();
+
+		if (!isActive) {
+			mActiveTouchIds.push_back(touchid);
+	    ivec2 pos = touch.getPos();
+	    this->submitFakeTuio("/fakeTuio/down", touchid, pos);
+		}
   }
 }
 
@@ -221,12 +249,22 @@ void TouchBroadcastApp::touchesMoved( TouchEvent event )
     return;
 
   for(  auto &touch : event.getTouches() ) {
-    if (touch.isHandled()) continue;
-    touch.setHandled();
+    // if (touch.isHandled()) continue;
+    // touch.setHandled();
 
     int touchid = touch.getId();
-    ivec2 pos = touch.getPos();
-    this->submitFakeTuio("/fakeTuio/move", touchid, pos);
+
+		std::list<int>::iterator findIter = std::find(mActiveTouchIds.begin(), mActiveTouchIds.end(), touchid);
+		bool isActive = findIter != mActiveTouchIds.end();
+
+		if (isActive) {
+
+    	ivec2 pos = touch.getPos();
+
+			if (this->setPos(touchid, pos)) { // any change?
+    		this->submitFakeTuio("/fakeTuio/move", touchid, pos);
+			}
+		}
   }
 }
 
@@ -244,13 +282,20 @@ void TouchBroadcastApp::touchesEnded( TouchEvent event )
     return;
 
   for(  auto &touch : event.getTouches() ) {
-    if (touch.isHandled()) continue;
-    touch.setHandled();
+    // if (touch.isHandled()) continue;
+    // touch.setHandled();
 
     int touchid = touch.getId();
-    ivec2 pos = touch.getPos();
 
-    this->submitFakeTuio("/fakeTuio/up", touchid, pos);
+		std::list<int>::iterator findIter = std::find(mActiveTouchIds.begin(), mActiveTouchIds.end(), touchid);
+		bool isActive = findIter != mActiveTouchIds.end();
+
+		if (isActive) {
+			mActiveTouchIds.erase(findIter);
+
+    	ivec2 pos = touch.getPos();
+    	this->submitFakeTuio("/fakeTuio/up", touchid, pos);
+		}
   }
 }
 
