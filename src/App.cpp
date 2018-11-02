@@ -198,7 +198,10 @@ void MultiTouchApp::touchesBegan( TouchEvent event )
   if( ! mIsConnected )
     return;
 
-  for( const auto &touch : event.getTouches() ) {
+  for( auto &touch : event.getTouches() ) {
+    if (touch.isHandled()) continue;
+    touch.setHandled();
+
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
     this->submitFakeTuio("/fakeTuio/down", touchid, pos);
@@ -217,7 +220,10 @@ void MultiTouchApp::touchesMoved( TouchEvent event )
   if( ! mIsConnected )
     return;
 
-  for( const auto &touch : event.getTouches() ) {
+  for(  auto &touch : event.getTouches() ) {
+    if (touch.isHandled()) continue;
+    touch.setHandled();
+
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
     this->submitFakeTuio("/fakeTuio/move", touchid, pos);
@@ -237,7 +243,10 @@ void MultiTouchApp::touchesEnded( TouchEvent event )
   if( ! mIsConnected )
     return;
 
-  for( const auto &touch : event.getTouches() ) {
+  for(  auto &touch : event.getTouches() ) {
+    if (touch.isHandled()) continue;
+    touch.setHandled();
+
     int touchid = touch.getId();
     ivec2 pos = touch.getPos();
 

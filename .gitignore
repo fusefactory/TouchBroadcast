@@ -35,3 +35,4 @@ dist/*
 *.exe
 *.out
 *.app
+_resources
