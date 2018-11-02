@@ -69,6 +69,7 @@ class MultiTouchApp : public App {
 	void	touchesMoved( TouchEvent event ) override;
 	void	touchesEnded( TouchEvent event ) override;
 
+  void keyDown( KeyEvent event ) override;
 	void	setup() override;
 	void	draw() override;
 
@@ -131,6 +132,8 @@ void MultiTouchApp::setup()
   // consider ourselves connected.
   mIsConnected = true;
 #endif
+
+  setFullScreen(true);
 }
 
 // Unified error handler. Easiest to have a bound function in this situation,
@@ -300,6 +303,14 @@ void MultiTouchApp::mouseUp( MouseEvent event )
 	mSender.send( msg, std::bind( &MultiTouchApp::onSendError,
 								  this, std::placeholders::_1 ) );
 }
+
+void MultiTouchApp::keyDown( KeyEvent event )
+{
+	if( event.getChar() == 'f' ) {
+		setFullScreen(!isFullScreen());
+	}
+}
+
 void MultiTouchApp::draw()
 {
 	gl::enableAlphaBlending();
