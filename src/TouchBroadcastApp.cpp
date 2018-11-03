@@ -11,10 +11,12 @@
 
 // #include "cinder/osc/Osc.h"
 #include "TUIO2/TuioServer.h"
+#include "EventToTuio.h"
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+using namespace TUIO2;
 
 // #define USE_UDP 1
 //
@@ -63,12 +65,14 @@ struct TouchPoint {
 class TouchBroadcastApp : public App {
  public:
 	TouchBroadcastApp();
+
 	void	mouseDown( MouseEvent event ) override;
   void	mouseMove( MouseEvent event ) override;
   void	mouseDrag( MouseEvent event ) override;
   void	mouseUp( MouseEvent event ) override;
   void submitFakeTuio(const string &addr, int id, const ivec2 &pos);
   void sendFakeTuio(const string &addr, int id, const ivec2 &pos);
+
 	bool setPos(int id, vec2 pos);
 	void	touchesBegan( TouchEvent event ) override;
 	void	touchesMoved( TouchEvent event ) override;
@@ -76,23 +80,26 @@ class TouchBroadcastApp : public App {
 
   void keyDown( KeyEvent event ) override;
 	void	setup() override;
+	void update() override;
 	void	draw() override;
 
   private:
+
+	vec2 normalise(const vec2& vec);
 
 	map<uint32_t,TouchPoint>	mActivePoints;
 	list<TouchPoint>			mDyingPoints;
 	list<int> mActiveTouchIds;
 
-	TUIO2::TuioServer *tuioServer;
-	// if( argc == 3 ) {
-	// 	server = new TuioServer(argv[1],atoi(argv[2]));
-	// } else server = new TuioServer(); // default is UDP port 3333 on localhost
+	std::shared_ptr<TuioServer> tuioServerRef;
+	std::shared_ptr<EventToTuio> eventToTuioRef;
 
 	// OSC
 	// void onSendError( asio::error_code error );
 	// Sender	mSender;
 	bool	mIsConnected = true;
+	bool commitOnEvent = true;
+	bool commitAtInterval = false; // TODO
 };
 
 void prepareSettings( TouchBroadcastApp::Settings *settings )
@@ -104,7 +111,7 @@ void prepareSettings( TouchBroadcastApp::Settings *settings )
   // settings->setDisplay( ci::Display::getDisplays()[0] );
 
 	// On mobile, if you disable multitouch then touch events will arrive via mouseDown(), mouseDrag(), etc.
-//	settings->setMultiTouchEnabled( false );
+	//	settings->setMultiTouchEnabled( false );
 }
 
 TouchBroadcastApp::TouchBroadcastApp()
@@ -146,6 +153,11 @@ void TouchBroadcastApp::setup()
 //   mIsConnected = true;
 // #endif
 
+	CI_LOG_I("Initialising TuioServer...");
+	this->tuioServerRef = std::make_shared<TuioServer>(destinationHost.c_str(), destinationPort);
+	this->tuioServerRef->setSourceName("TouchBroadcast");
+	this->eventToTuioRef = std::make_shared<EventToTuio>(this->tuioServerRef);
+
   setFullScreen(true);
 }
 
@@ -182,6 +194,8 @@ void TouchBroadcastApp::submitFakeTuio(const string &addr, int id, const ivec2 &
 }
 
 void TouchBroadcastApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
+
+
   // osc::Message msg( addr );
   // // msg.append( "set" );
   // msg.append( (int)id );
@@ -195,6 +209,10 @@ void TouchBroadcastApp::sendFakeTuio(const string &addr, int id, const ivec2 &po
   // // could store it in the error callback to dispatch it again if there was a problem.
   // mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
   //                 this, std::placeholders::_1 ) );
+}
+
+vec2 TouchBroadcastApp::normalise(const vec2& vec) {
+	return vec2((float)vec.x / getWindowWidth(), (float)vec.y / getWindowHeight());
 }
 
 bool TouchBroadcastApp::setPos(int id, vec2 pos) {
@@ -316,7 +334,16 @@ void TouchBroadcastApp::mouseDown( MouseEvent event )
 	if( ! mIsConnected )
 		return;
 
-this->sendFakeTuio("/fakeTuio/down", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
+	this->sendFakeTuio("/fakeTuio/down", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
+
+	auto normpos = normalise(event.getPos());
+	this->eventToTuioRef->touchDown(normpos.x, normpos.y);
+	//
+	// this->tuioServerRef->createTuioPointer(normpos.x, normpos.y, 0,0,0,0);
+	//
+	// if (commitOnEvent) {
+	// 	this->tuioServerRef->commitTuioFrame();
+	// }
 }
 
 void TouchBroadcastApp::mouseDrag( MouseEvent event )
@@ -326,7 +353,23 @@ void TouchBroadcastApp::mouseDrag( MouseEvent event )
     return;
 
 	this->sendFakeTuio("/fakeTuio/move", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
+
+
+	// if (commitOnEvent) {
+	// 	auto frameTime = TuioTime::getSystemTime();
+	// 	this->tuioServerRef->initTuioFrame(frameTime);
+	// }
+	//
+	// auto normpos = normalise(event.getPos());
+	// this->tuioServerRef->createTuioPointer(normpos.x, normpos.y, 0,0,0,0);
+	//
+	// if (commitOnEvent) {
+	// 	this->tuioServerRef->commitTuioFrame();
+	// }}
+	auto normpos = normalise(event.getPos());
+	this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 }
+
 
 void TouchBroadcastApp::mouseUp( MouseEvent event )
 {
@@ -335,6 +378,9 @@ void TouchBroadcastApp::mouseUp( MouseEvent event )
 		return;
 
 	this->sendFakeTuio("/fakeTuio/up", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
+
+	auto normpos = normalise(event.getPos());
+	this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 }
 
 void TouchBroadcastApp::keyDown( KeyEvent event )
@@ -346,12 +392,12 @@ void TouchBroadcastApp::keyDown( KeyEvent event )
   if( event.getChar() == 't' ) {
     getWindow()->setAlwaysOnTop(!getWindow()->isAlwaysOnTop());
   }
-
-  // if( event.getChar() == 'T' ) {
-  //   getWindow()->setAlwaysOnTop(true);
-  // }
 }
 
+void TouchBroadcastApp::update() {
+	this->eventToTuioRef->update();
+	this->tuioServerRef->setDimension(getWindowWidth(), getWindowHeight());
+}
 void TouchBroadcastApp::draw()
 {
 	gl::enableAlphaBlending();
