@@ -9,19 +9,20 @@
 #include <map>
 #include <list>
 
-#include "cinder/osc/Osc.h"
+// #include "cinder/osc/Osc.h"
+#include "TUIO2/TuioServer.h"
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-#define USE_UDP 1
-
-#if USE_UDP
-using Sender = osc::SenderUdp;
-#else
-using Sender = osc::SenderTcp;
-#endif
+// #define USE_UDP 1
+//
+// #if USE_UDP
+// using Sender = osc::SenderUdp;
+// #else
+// using Sender = osc::SenderTcp;
+// #endif
 
 const std::string destinationHost = "127.0.0.1";
 const uint16_t destinationPort = 3333;
@@ -83,10 +84,15 @@ class TouchBroadcastApp : public App {
 	list<TouchPoint>			mDyingPoints;
 	list<int> mActiveTouchIds;
 
+	TUIO2::TuioServer *tuioServer;
+	// if( argc == 3 ) {
+	// 	server = new TuioServer(argv[1],atoi(argv[2]));
+	// } else server = new TuioServer(); // default is UDP port 3333 on localhost
+
 	// OSC
-	void onSendError( asio::error_code error );
-	Sender	mSender;
-	bool	mIsConnected;
+	// void onSendError( asio::error_code error );
+	// Sender	mSender;
+	bool	mIsConnected = true;
 };
 
 void prepareSettings( TouchBroadcastApp::Settings *settings )
@@ -102,7 +108,7 @@ void prepareSettings( TouchBroadcastApp::Settings *settings )
 }
 
 TouchBroadcastApp::TouchBroadcastApp()
-: mSender( localPort, destinationHost, destinationPort ), mIsConnected( false )
+//: mSender( localPort, destinationHost, destinationPort ), mIsConnected( false )
 {
 }
 
@@ -110,65 +116,65 @@ void TouchBroadcastApp::setup()
 {
 	CI_LOG_I( "MT: " << System::hasMultiTouch() << " Max points: " << System::getMaxMultiTouchPoints() );
 
-  try {
-    // Bind the sender to the endpoint. This function may throw. The exception will
-    // contain asio::error_code information.
-    mSender.bind();
-  }
-  catch ( const osc::Exception &ex ) {
-    CI_LOG_E( "Error binding: " << ex.what() << " val: " << ex.value() );
-    quit();
-  }
-
-#if ! USE_UDP
-  mSender.connect(
-  // Set up the OnConnectFn. If there's no error, you can consider yourself connected to
-  // the endpoint supplied.
-  [&]( asio::error_code error ){
-    if( error ) {
-      CI_LOG_E( "Error connecting: " << error.message() << " val: " << error.value() );
-      quit();
-    }
-    else {
-      CI_LOG_V( "Connected" );
-      mIsConnected = true;
-    }
-  });
-#else
-  // Udp doesn't "connect" the same way Tcp does. If bind doesn't throw, we can
-  // consider ourselves connected.
-  mIsConnected = true;
-#endif
+//   try {
+//     // Bind the sender to the endpoint. This function may throw. The exception will
+//     // contain asio::error_code information.
+//     mSender.bind();
+//   }
+//   catch ( const osc::Exception &ex ) {
+//     CI_LOG_E( "Error binding: " << ex.what() << " val: " << ex.value() );
+//     quit();
+//   }
+//
+// #if ! USE_UDP
+//   mSender.connect(
+//   // Set up the OnConnectFn. If there's no error, you can consider yourself connected to
+//   // the endpoint supplied.
+//   [&]( asio::error_code error ){
+//     if( error ) {
+//       CI_LOG_E( "Error connecting: " << error.message() << " val: " << error.value() );
+//       quit();
+//     }
+//     else {
+//       CI_LOG_V( "Connected" );
+//       mIsConnected = true;
+//     }
+//   });
+// #else
+//   // Udp doesn't "connect" the same way Tcp does. If bind doesn't throw, we can
+//   // consider ourselves connected.
+//   mIsConnected = true;
+// #endif
 
   setFullScreen(true);
 }
 
 // Unified error handler. Easiest to have a bound function in this situation,
 // since we're sending from many different places.
-void TouchBroadcastApp::onSendError( asio::error_code error )
-{
-	if( error ) {
-		CI_LOG_E( "Error sending: " << error.message() << " val: " << error.value() );
-		// If you determine that this error is fatal, make sure to flip mIsConnected. It's
-		// possible that the error isn't fatal.
-		mIsConnected = false;
-		try {
-#if ! USE_UDP
-			// If this is Tcp, it's recommended that you shutdown before closing. This
-			// function could throw. The exception will contain asio::error_code
-			// information.
-			mSender.shutdown();
-#endif
-			// Close the socket on exit. This function could throw. The exception will
-			// contain asio::error_code information.
-			mSender.close();
-		}
-		catch( const osc::Exception &ex ) {
-			CI_LOG_EXCEPTION( "Cleaning up socket: val -" << ex.value(), ex );
-		}
-		quit();
-	}
-}
+// void TouchBroadcastApp::onSendError( asio::error_code error )
+// {
+// 	if( error ) {
+// 		CI_LOG_E( "Error sending: " << error.message() << " val: " << error.value() );
+// 		// If you determine that this error is fatal, make sure to flip mIsConnected. It's
+// 		// possible that the error isn't fatal.
+// 		mIsConnected = false;
+// 		try {
+// #if ! USE_UDP
+// 			// If this is Tcp, it's recommended that you shutdown before closing. This
+// 			// function could throw. The exception will contain asio::error_code
+// 			// information.
+// 			mSender.shutdown();
+// #endif
+// 			// Close the socket on exit. This function could throw. The exception will
+// 			// contain asio::error_code information.
+// 			mSender.close();
+// 		}
+// 		catch( const osc::Exception &ex ) {
+// 			CI_LOG_EXCEPTION( "Cleaning up socket: val -" << ex.value(), ex );
+// 		}
+// 		quit();
+// 	}
+// }
 void TouchBroadcastApp::submitFakeTuio(const string &addr, int id, const ivec2 &pos) {
   // TODO; check if another message with the same addr/id combination is already queued,
   // if so, remove that message (deprecated by this new message)
@@ -176,19 +182,19 @@ void TouchBroadcastApp::submitFakeTuio(const string &addr, int id, const ivec2 &
 }
 
 void TouchBroadcastApp::sendFakeTuio(const string &addr, int id, const ivec2 &pos) {
-  osc::Message msg( addr );
-  // msg.append( "set" );
-  msg.append( (int)id );
-  msg.append( (float)pos.x / getWindowWidth() );
-  msg.append( (float)pos.y / getWindowHeight() );
-  msg.append( (float)0 ); // velX
-  msg.append( (float)0 ); // velY
-  msg.append( (float)0 ); // motionAccel
-
-  // Send the msg and also provide an error handler. If the message is important you
-  // could store it in the error callback to dispatch it again if there was a problem.
-  mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
-                  this, std::placeholders::_1 ) );
+  // osc::Message msg( addr );
+  // // msg.append( "set" );
+  // msg.append( (int)id );
+  // msg.append( (float)pos.x / getWindowWidth() );
+  // msg.append( (float)pos.y / getWindowHeight() );
+  // msg.append( (float)0 ); // velX
+  // msg.append( (float)0 ); // velY
+  // msg.append( (float)0 ); // motionAccel
+	//
+  // // Send the msg and also provide an error handler. If the message is important you
+  // // could store it in the error callback to dispatch it again if there was a problem.
+  // mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
+  //                 this, std::placeholders::_1 ) );
 }
 
 bool TouchBroadcastApp::setPos(int id, vec2 pos) {
@@ -310,18 +316,7 @@ void TouchBroadcastApp::mouseDown( MouseEvent event )
 	if( ! mIsConnected )
 		return;
 
-    osc::Message msg( "/fakeTuio/down" );
-    // msg.append( "set" );
-    msg.append( (int)0 );
-  	msg.append( (float)event.getPos().x / getWindowWidth() );
-  	msg.append( (float)event.getPos().y / getWindowHeight() );
-    msg.append( (float)0 ); // velX
-    msg.append( (float)0 ); // velY
-    msg.append( (float)0 ); // motionAccel
-  	// Send the msg and also provide an error handler. If the message is important you
-  	// could store it in the error callback to dispatch it again if there was a problem.
-  	mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
-  								  this, std::placeholders::_1 ) );
+this->sendFakeTuio("/fakeTuio/down", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
 }
 
 void TouchBroadcastApp::mouseDrag( MouseEvent event )
@@ -330,18 +325,7 @@ void TouchBroadcastApp::mouseDrag( MouseEvent event )
   if( ! mIsConnected )
     return;
 
-  osc::Message msg( "/fakeTuio/move" );
-  // msg.append( "set" );
-  msg.append( (int)0 );
-  msg.append( (float)event.getPos().x / getWindowWidth() );
-  msg.append( (float)event.getPos().y / getWindowHeight() );
-  msg.append( (float)0 ); // velX
-  msg.append( (float)0 ); // velY
-  msg.append( (float)0 ); // motionAccel
-  // Send the msg and also provide an error handler. If the message is important you
-  // could store it in the error callback to dispatch it again if there was a problem.
-  mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
-                  this, std::placeholders::_1 ) );
+	this->sendFakeTuio("/fakeTuio/move", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
 }
 
 void TouchBroadcastApp::mouseUp( MouseEvent event )
@@ -350,14 +334,7 @@ void TouchBroadcastApp::mouseUp( MouseEvent event )
 	if( ! mIsConnected )
 		return;
 
-	osc::Message msg( "/fakeTuio/up" );
-  msg.append( (int)0 );
-	msg.append( (float)event.getPos().x / getWindowWidth() );
-	msg.append( (float)event.getPos().y / getWindowHeight() );
-	// Send the msg and also provide an error handler. If the message is important you
-	// could store it in the error callback to dispatch it again if there was a problem.
-	mSender.send( msg, std::bind( &TouchBroadcastApp::onSendError,
-								  this, std::placeholders::_1 ) );
+	this->sendFakeTuio("/fakeTuio/up", 0, vec2((float)event.getPos().x / getWindowWidth(), (float)event.getPos().y / getWindowHeight()));
 }
 
 void TouchBroadcastApp::keyDown( KeyEvent event )
