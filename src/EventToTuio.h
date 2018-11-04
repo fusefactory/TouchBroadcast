@@ -14,7 +14,6 @@ class EventToTuio {
 
     // send frame (if one was initialized) and starts new frame
     void update();
-    void prep();
     void touchDown(float x, float y);
     void touchMove(float x, float y);
     void touchUp(float x, float y);

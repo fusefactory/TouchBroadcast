@@ -10,17 +10,11 @@ EventToTuio::EventToTuio(std::shared_ptr<TUIO2::TuioServer> server) : tuioServer
   lastCommitTime = TuioTime::getSystemTime();
 }
 
-void EventToTuio::prep() {
-  // if (this->tuioServerRef->getFrameTime() < lastCommitTime) {
-  //   tuioServerRef->initTuioFrame(TuioTime::getSystemTime());
-  // }
-}
 
 void EventToTuio::update() {
 
   if (this->bFrameStarted) {
     this->bFrameStarted = false;
-    std::cout << "EventToTuio::update - commit" << std::endl;
     // tuioServerRef->stopUntouchedMovingObjects();
     tuioServerRef->commitTuioFrame(); // todo; configurable interval?
     lastCommitTime = TuioTime::getSystemTime();
@@ -32,10 +26,6 @@ void EventToTuio::update() {
 }
 
 void EventToTuio::touchDown(float x, float y) {
-  std::cout << "EventToTuio::touchDown" << std::endl;
-
-  prep();
-
   // auto match = FindClosest(stickyPointerList, x, y);
   //
   // if (match==NULL) {
@@ -47,19 +37,6 @@ void EventToTuio::touchDown(float x, float y) {
 }
 
 void EventToTuio::touchMove(float x, float y) {
-  std::cout << "EventToTuio::touchMove" << std::endl;
-  prep();
-  // TuioPointer *pointer = NULL;
-  // float distance;
-  //
-  // for (std::list<TuioPointer*>::iterator iter = activePointerList.begin(); iter!=activePointerList.end(); iter++) {
-  //   TuioPointer *tptr = (*iter);
-  //   float test = tptr->getDistance(x,y);
-  //   if (pointer == NULL || test < distance) {
-  //     distance = test;
-  //     pointer = tptr;
-  //   }
-  // }
   auto pointer = FindClosest(activePointerList, x, y);
 
   if (pointer==NULL) return;
@@ -68,15 +45,6 @@ void EventToTuio::touchMove(float x, float y) {
 }
 
 void EventToTuio::touchUp(float x, float y) {
-  std::cout << "EventToTuio::touchUp" << std::endl;
-  prep();
-  // auto pointer = FindClosest(stickyPointerList, x, y);
-  //
-  // if (pointer != NULL) {
-  //   activePointerList.remove(pointer);
-  //   return;
-  // }
-
   auto pointer = FindClosest(activePointerList, x, y);
 
   if (pointer != NULL) {
