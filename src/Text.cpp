@@ -16,6 +16,7 @@ void Text::update() {
 
 void Text::draw() {
   if (mTex) {
+    const auto& clrScp = ci::gl::ScopedColor(mColor);
     ci::gl::pushMatrices();
     ci::gl::translate(mPos);
     ci::gl::scale(mScale);
@@ -28,7 +29,7 @@ ci::gl::TextureRef Text::createTexture(const std::string& text, float fontSize) 
   ci::TextLayout layout;
   layout.clear( ci::ColorA( 0.0f, 0.0f, 0.0f, 0.0f ) );
   layout.setFont( ci::Font( "AndaleMono", fontSize ) );
-  layout.setColor( ci::Color( 0.8f, 0.8f, 0.8f ) );
+  layout.setColor( ci::Color( 1, 1, 1 ) );
 
   istringstream ss(text);
   string line;

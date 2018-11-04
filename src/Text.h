@@ -24,4 +24,5 @@ class Text {
     std::string text = "";
     ci::vec2 mScale = ci::vec2(1.0f);
     ci::vec2 mPos = ci::vec2(10.0f);
+    ci::Color mColor = ci::ColorA(0.7f, 0.7f, 0.7f);
 };
