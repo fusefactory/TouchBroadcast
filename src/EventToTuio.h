@@ -11,15 +11,19 @@ class EventToTuio {
   public:
     EventToTuio(std::shared_ptr<TUIO::TuioServer> server);
 
-    // send frame (if one was initialized) and starts new frame
+    /// update, when called sends all touch data collected
+    /// since the last call to update.
     void update();
+
+    // touch event input methods
     void touchDown(float x, float y);
     void touchMove(float x, float y);
     void touchUp(float x, float y);
 
+  protected:
     TUIO::TuioCursor* FindClosest(std::list<TUIO::TuioCursor*>& list, float x, float y);
+
   private:
-    TUIO::TuioTime lastCommitTime;
     bool bFrameStarted = false;
     std::shared_ptr<TUIO::TuioServer> tuioServerRef;
     std::list<TUIO::TuioCursor*> activePointerList;

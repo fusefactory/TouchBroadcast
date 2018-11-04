@@ -7,20 +7,17 @@ using namespace std;
 using namespace TUIO;
 
 EventToTuio::EventToTuio(std::shared_ptr<TUIO::TuioServer> server) : tuioServerRef(server), bFrameStarted(false) {
-  lastCommitTime = TuioTime::getSystemTime();
 }
 
-
 void EventToTuio::update() {
-
+  // commit frame
   if (this->bFrameStarted) {
     this->bFrameStarted = false;
     // tuioServerRef->stopUntouchedMovingCursors();
     tuioServerRef->commitFrame(); // todo; configurable interval?
-    lastCommitTime = TuioTime::getSystemTime();
   }
 
-  // start next frame
+  // start new frame
   tuioServerRef->initFrame(TuioTime::getSystemTime());
   this->bFrameStarted = true;
 }
@@ -40,7 +37,7 @@ void EventToTuio::touchMove(float x, float y) {
   auto pointer = FindClosest(activePointerList, x, y);
 
   if (pointer==NULL) return;
-  if (pointer->getTuioTime()==this->tuioServerRef->getFrameTime()) return;
+  if (pointer->getTuioTime() == this->tuioServerRef->getFrameTime()) return;
   this->tuioServerRef->updateTuioCursor(pointer,x,y);
 }
 
