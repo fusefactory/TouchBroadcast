@@ -1,12 +1,12 @@
-/// This class is inspired by the Tuio2Simulator from the TUIO2 CPP Refernece inmplementation at
-/// https://github.com/mkalten/TUIO20_CPP
+/// This class is inspired by the TUIOSimulator from the TUIO CPP Refernece inmplementation at
+/// https://github.com/mkalten/TUIO11_CPP
 
 #include "EventToTuio.h"
 
 using namespace std;
-using namespace TUIO2;
+using namespace TUIO;
 
-EventToTuio::EventToTuio(std::shared_ptr<TUIO2::TuioServer> server) : tuioServerRef(server), bFrameStarted(false) {
+EventToTuio::EventToTuio(std::shared_ptr<TUIO::TuioServer> server) : tuioServerRef(server), bFrameStarted(false) {
   lastCommitTime = TuioTime::getSystemTime();
 }
 
@@ -15,13 +15,13 @@ void EventToTuio::update() {
 
   if (this->bFrameStarted) {
     this->bFrameStarted = false;
-    // tuioServerRef->stopUntouchedMovingObjects();
-    tuioServerRef->commitTuioFrame(); // todo; configurable interval?
+    // tuioServerRef->stopUntouchedMovingCursors();
+    tuioServerRef->commitFrame(); // todo; configurable interval?
     lastCommitTime = TuioTime::getSystemTime();
   }
 
   // start next frame
-  tuioServerRef->initTuioFrame(TuioTime::getSystemTime());
+  tuioServerRef->initFrame(TuioTime::getSystemTime());
   this->bFrameStarted = true;
 }
 
@@ -29,8 +29,8 @@ void EventToTuio::touchDown(float x, float y) {
   // auto match = FindClosest(stickyPointerList, x, y);
   //
   // if (match==NULL) {
-    auto tobj = this->tuioServerRef->createTuioPointer(x,y,0,0,0,0);
-    activePointerList.push_back(tobj->getTuioPointer());
+    auto cursor = this->tuioServerRef->addTuioCursor(x,y);
+    activePointerList.push_back(cursor);
   // } else {
     // activePointerList.push_back(match);
   // }
@@ -41,7 +41,7 @@ void EventToTuio::touchMove(float x, float y) {
 
   if (pointer==NULL) return;
   if (pointer->getTuioTime()==this->tuioServerRef->getFrameTime()) return;
-  this->tuioServerRef->updateTuioPointer(pointer,x,y,0,0,0,0);
+  this->tuioServerRef->updateTuioCursor(pointer,x,y);
 }
 
 void EventToTuio::touchUp(float x, float y) {
@@ -49,16 +49,16 @@ void EventToTuio::touchUp(float x, float y) {
 
   if (pointer != NULL) {
     activePointerList.remove(pointer);
-    this->tuioServerRef->removeTuioPointer(pointer);
+    this->tuioServerRef->removeTuioCursor(pointer);
   }
 }
 
-TuioPointer* EventToTuio::FindClosest(std::list<TuioPointer*>& list, float x, float y) {
-  TuioPointer *match = NULL;
+TuioCursor* EventToTuio::FindClosest(std::list<TuioCursor*>& list, float x, float y) {
+  TuioCursor *match = NULL;
   float distance;
 
-  for (std::list<TuioPointer*>::iterator iter = list.begin(); iter!=list.end(); iter++) {
-    TuioPointer *tptr = (*iter);
+  for (std::list<TuioCursor*>::iterator iter = list.begin(); iter!=list.end(); iter++) {
+    TuioCursor *tptr = (*iter);
     float test = tptr->getDistance(x,y);
     if (match == NULL || test < distance) {
       distance = test;

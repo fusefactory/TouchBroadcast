@@ -10,13 +10,13 @@
 #include <list>
 
 // #include "cinder/osc/Osc.h"
-#include "TUIO2/TuioServer.h"
+#include "TUIO/TuioServer.h"
 #include "EventToTuio.h"
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
-using namespace TUIO2;
+using namespace TUIO;
 
 // #define USE_UDP 1
 //
@@ -396,7 +396,7 @@ void TouchBroadcastApp::keyDown( KeyEvent event )
 
 void TouchBroadcastApp::update() {
 	this->eventToTuioRef->update();
-	this->tuioServerRef->setDimension(getWindowWidth(), getWindowHeight());
+	// this->tuioServerRef->setDimension(getWindowWidth(), getWindowHeight());
 }
 void TouchBroadcastApp::draw()
 {
