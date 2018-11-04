@@ -2,7 +2,6 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/System.h"
-#include "cinder/Rand.h"
 #include "cinder/Log.h"
 
 #include <vector>
@@ -53,7 +52,7 @@ class TouchBroadcastApp : public App {
 		std::shared_ptr<TUIO::TuioServer> tuioServerRef;
 
 		#ifdef TOUCH_POINTS
-		std::shared_ptr<TouchPointManager> touchPointManRef;
+		std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
 		#endif
 
 		Text helpText;
@@ -87,11 +86,20 @@ void TouchBroadcastApp::setup()
 	this->helpText.setPos(ci::vec2(10,10));
 	this->helpText.setScale(ci::vec2(1,1));
 	this->helpText.setFontSize(20);
-	this->helpText.setText("TouchBroadcaster\n===============\n\nF - toggle fullscreen\nT - toggle always-on-top\nH - draw help overlay");
+	this->helpText.setText("TouchBroadcaster"
+		"\n==============="
+		"\nF - toggle fullscreen"
+		"\nT - toggle always-on-top"
+		"\nH - draw help overlay"
+		"\nV - toggle visualisation"
+		"\n \n \n \n "
+		"\nDO NOT CLOSE"
+		"\n "
+		"\nTHIS APPLICATION SENDS TOUCH-SCREEN EVENTS TO THE INTERACTIVE TABLE APPLICATION");
 
-	#ifdef TOUCH_POINTS
-		this->touchPointManRef = std::make_shared<TouchPointManager>();
-	#endif
+	// #ifdef TOUCH_POINTS
+	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
+	// #endif
 
   setFullScreen(true);
 }
@@ -107,7 +115,7 @@ void TouchBroadcastApp::touchesBegan( TouchEvent event )
 		this->eventToTuioRef->touchDown(normpos.x, normpos.y);
 
 		#ifdef TOUCH_POINTS
-			this->touchPointManRef->add(touch.getId(), touch.getPos());
+			if (this->touchPointManRef) this->touchPointManRef->add(touch.getId(), touch.getPos());
 		#endif
 	}
 }
@@ -120,7 +128,7 @@ void TouchBroadcastApp::touchesMoved( TouchEvent event )
 		this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 
 		#ifdef TOUCH_POINTS
-			this->touchPointManRef->update(touch.getId(), touch.getPos());
+			if (this->touchPointManRef) this->touchPointManRef->update(touch.getId(), touch.getPos());
 		#endif
 	}
 }
@@ -132,7 +140,7 @@ void TouchBroadcastApp::touchesEnded( TouchEvent event )
 		this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 
 		#ifdef TOUCH_POINTS
-			this->touchPointManRef->remove(touch.getId());
+			if (this->touchPointManRef) this->touchPointManRef->remove(touch.getId());
 		#endif
 	}
 }
@@ -143,7 +151,7 @@ void TouchBroadcastApp::mouseDown( MouseEvent event )
 	this->eventToTuioRef->touchDown(normpos.x, normpos.y);
 
 	#ifdef TOUCH_POINTS
-		this->touchPointManRef->update(0, event.getPos());
+		if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
 	#endif
 }
 
@@ -153,7 +161,7 @@ void TouchBroadcastApp::mouseDrag( MouseEvent event )
 	this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 
 	#ifdef TOUCH_POINTS
-		this->touchPointManRef->update(0, event.getPos());
+		if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
 	#endif
 }
 
@@ -163,7 +171,7 @@ void TouchBroadcastApp::mouseUp( MouseEvent event )
 	this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 
 	#ifdef TOUCH_POINTS
-		this->touchPointManRef->remove(0);
+		if (this->touchPointManRef) this->touchPointManRef->remove(0);
 	#endif
 }
 
@@ -184,6 +192,10 @@ void TouchBroadcastApp::keyDown( KeyEvent event )
 	if (event.getCode() == KeyEvent::KEY_ESCAPE) {
 		quit();
 	}
+
+	if (event.getChar() == 'v') {
+		this->touchPointManRef = this->touchPointManRef ? nullptr : std::make_shared<TouchPointManager>();
+	}
 }
 
 void TouchBroadcastApp::update() {
@@ -197,7 +209,7 @@ void TouchBroadcastApp::draw()
 	gl::clear( Color( 0.1f, 0.1f, 0.1f ) );
 
 	#ifdef TOUCH_POINTS
-		this->touchPointManRef->draw();
+		if (this->touchPointManRef) this->touchPointManRef->draw();
 	#endif
 
 	// draw yellow circles at the active touch points
