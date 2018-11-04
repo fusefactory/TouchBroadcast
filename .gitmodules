@@ -1,6 +1,6 @@
-[submodule "lib/TUIO20_CPP"]
-	path = lib/TUIO20_CPP
-	url = git@github.com:fusefactory/TUIO20_CPP.git # git@github.com:mkalten/TUIO20_CPP.git
 [submodule "lib/TUIO11_CPP"]
 	path = lib/TUIO11_CPP
 	url = git@github.com:mkalten/TUIO11_CPP.git
+# [submodule "lib/TUIO20_CPP"]
+# 	path = lib/TUIO20_CPP
+# 	url = git@github.com:fusefactory/TUIO20_CPP.git # git@github.com:mkalten/TUIO20_CPP.git
