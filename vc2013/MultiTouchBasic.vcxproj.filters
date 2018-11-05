@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\include\cinder\Cinder.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\FlashSender.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\LibExport.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OneEuroFilter.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OscReceiver.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OscSender.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TcpReceiver.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TcpSender.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioBlob.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioClient.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioContainer.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioCursor.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioDispatcher.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioListener.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioManager.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioObject.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioPoint.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioServer.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioTime.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\UdpReceiver.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\UdpSender.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\WebSockSender.h">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\IpEndpointName.h">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\NetworkingUtils.h">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\PacketListener.h">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\TimerListener.h">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\UdpSocket.h">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\MessageMappingOscPacketListener.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscException.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscHostEndianness.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscOutboundPacketStream.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscPacketListener.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscPrintReceivedElements.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscReceivedElements.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscTypes.h">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="TUIO11">
+      <UniqueIdentifier>{f8d02fc6-0574-4fdc-ad7c-48b6f2c66ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUIO11\oscpack">
+      <UniqueIdentifier>{bbc82ea5-4f55-4eee-b0a8-7ed83f174c06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUIO11\TUIO">
+      <UniqueIdentifier>{580d4f4d-58bf-4e1e-9353-3321e70ac2ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUIO11\oscpack\osc">
+      <UniqueIdentifier>{312c4374-8f05-41f8-8b15-786458842c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TUIO11\oscpack\ip">
+      <UniqueIdentifier>{d8db9c8f-3154-45aa-b523-e5d14e4ab07f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\FlashSender.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\OneEuroFilter.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\OscReceiver.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TcpReceiver.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TcpSender.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioBlob.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioClient.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioContainer.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioCursor.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioDispatcher.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioManager.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioObject.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioPoint.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioServer.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioTime.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\UdpReceiver.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\UdpSender.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\WebSockSender.cpp">
+      <Filter>TUIO11\TUIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\win32\NetworkingUtils.cpp">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\win32\UdpSocket.cpp">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\IpEndpointName.cpp">
+      <Filter>TUIO11\oscpack\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscOutboundPacketStream.cpp">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscPrintReceivedElements.cpp">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscReceivedElements.cpp">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscTypes.cpp">
+      <Filter>TUIO11\oscpack\osc</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

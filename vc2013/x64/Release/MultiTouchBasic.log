@@ -1,0 +1,141 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MultiTouchBasic.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  IpEndpointName.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(53): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(55): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(68): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(78): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\ipendpointname.cpp(80): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+  NetworkingUtils.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\ip\win32\networkingutils.cpp(87): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\winsock2.h(2218): note: see declaration of 'gethostbyname'
+  UdpSocket.cpp
+  OscOutboundPacketStream.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\osc\oscoutboundpacketstream.cpp(363): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\osc\oscoutboundpacketstream.cpp(605): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\osc\oscoutboundpacketstream.cpp(625): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+  OscPrintReceivedElements.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\oscpack\osc\oscprintreceivedelements.cpp(129): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(475): note: see declaration of 'ctime'
+  OscReceivedElements.cpp
+  OscTypes.cpp
+  FlashSender.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(162): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(163): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(199): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(205): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(217): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(221): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(247): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(249): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(388): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(394): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: see declaration of 'strcpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\flashsender.cpp(648): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  OneEuroFilter.cpp
+  OscReceiver.cpp
+  TcpReceiver.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tcpreceiver.cpp(186): warning C4244: 'argument': conversion from 'SOCKET' to 'int', possible loss of data
+  TcpSender.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tcpsender.cpp(79): warning C4244: 'argument': conversion from 'SOCKET' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tcpsender.cpp(278): warning C4267: '=': conversion from 'size_t' to 'char', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tcpsender.cpp(297): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  TuioBlob.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(110): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(111): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(114): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(118): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(119): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(122): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(123): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(124): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(127): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioblob.cpp(128): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  TuioClient.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(83): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(84): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(246): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(247): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(475): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioclient.cpp(476): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(439): note: see declaration of 'strtok'
+  TuioContainer.cpp
+  TuioCursor.cpp
+  TuioDispatcher.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuiodispatcher.cpp(178): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuiodispatcher.cpp(182): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuiodispatcher.cpp(186): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TuioManager.cpp
+  TuioObject.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(80): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(81): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(84): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(88): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(89): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(92): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(93): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioobject.cpp(94): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  TuioPoint.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuiopoint.cpp(74): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuiopoint.cpp(75): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Compiling...
+  TuioServer.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioserver.cpp(139): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioserver.cpp(159): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\tuioserver.cpp(176): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: see declaration of 'sprintf'
+  TuioTime.cpp
+  UdpReceiver.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\udpreceiver.cpp(37): warning C4101: 'e': unreferenced local variable
+  UdpSender.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\udpsender.cpp(30): warning C4101: 'e': unreferenced local variable
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\udpsender.cpp(49): warning C4101: 'e': unreferenced local variable
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\udpsender.cpp(66): warning C4101: 'e': unreferenced local variable
+  WebSockSender.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\websocksender.cpp(46): warning C4267: '=': conversion from 'size_t' to 'char', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\websocksender.cpp(73): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\websocksender.cpp(114): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\websocksender.cpp(97): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: see declaration of 'strncpy'
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\lib\tuio11_cpp\tuio\websocksender.cpp(103): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(265): note: see declaration of 'strncat'
+  EventToTuio.cpp
+  Text.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\include\cinder\filesystem.h(40): warning C4996: 'std::tr2': warning STL4018: The non-Standard std::tr2::sys namespace is deprecated and will be REMOVED. It is superseded by std::experimental::filesystem. You can define _SILENCE_TR2_SYS_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\experimental\filesystem(3188): note: see declaration of 'std::tr2'
+  Unknown compiler version - please run the configure tests and report the results
+  TouchBroadcastApp.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\include\cinder\filesystem.h(40): warning C4996: 'std::tr2': warning STL4018: The non-Standard std::tr2::sys namespace is deprecated and will be REMOVED. It is superseded by std::experimental::filesystem. You can define _SILENCE_TR2_SYS_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\experimental\filesystem(3188): note: see declaration of 'std::tr2'
+  Unknown compiler version - please run the configure tests and report the results
+  TouchPoint.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\include\cinder\filesystem.h(40): warning C4996: 'std::tr2': warning STL4018: The non-Standard std::tr2::sys namespace is deprecated and will be REMOVED. It is superseded by std::experimental::filesystem. You can define _SILENCE_TR2_SYS_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\experimental\filesystem(3188): note: see declaration of 'std::tr2'
+  Unknown compiler version - please run the configure tests and report the results
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\src\touchpoint.cpp(23): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\touchbroadcast\src\touchpoint.cpp(30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating code
+  All 2550 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  MultiTouchBasic.vcxproj -> C:\Users\mark\code\cinder_0.9.0_vc2013\samples\TouchBroadcast\vc2013\x64\Release\TouchBroadcast.exe
