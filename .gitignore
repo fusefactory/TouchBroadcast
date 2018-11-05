@@ -36,3 +36,4 @@ dist/*
 *.out
 *.app
 _resources
+.vs

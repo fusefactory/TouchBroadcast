@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,6 +22,8 @@
     <ProjectGuid>{98F87F66-7F4F-47D7-9C34-6CF9C40BB6E2}</ProjectGuid>
     <RootNamespace>MultiTouch</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>TouchBroadcast</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -30,7 +32,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v110_xp</PlatformToolset>
     <PlatformToolset>v110</PlatformToolset>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,21 +40,21 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v110_xp</PlatformToolset>
     <PlatformToolset>v110</PlatformToolset>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v110_xp</PlatformToolset>
     <PlatformToolset>v110</PlatformToolset>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v110_xp</PlatformToolset>
     <PlatformToolset>v110</PlatformToolset>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -84,7 +86,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\include;..\lib\TUIO11_CPP\oscpack;..\lib\TUIO11_CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -95,8 +97,8 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget);..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);winmm.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -109,7 +111,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\include;..\lib\TUIO11_CPP\oscpack;..\lib\TUIO11_CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -119,8 +121,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget);..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);winmm.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -131,7 +133,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\include;..\lib\TUIO11_CPP\oscpack;..\lib\TUIO11_CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -140,8 +142,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget);..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);winmm.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -154,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\include;..\lib\TUIO11_CPP\oscpack;..\lib\TUIO11_CPP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -163,8 +165,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget);..\..\..\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);winmm.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -176,9 +178,74 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\include\cinder\Cinder.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\IpEndpointName.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\PacketListener.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\TimerListener.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\ip\UdpSocket.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscException.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscPacketListener.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\oscpack\osc\OscTypes.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\FlashSender.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\LibExport.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OneEuroFilter.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OscReceiver.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\OscSender.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TcpReceiver.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TcpSender.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioBlob.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioClient.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioContainer.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioCursor.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioDispatcher.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioListener.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioManager.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioObject.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioPoint.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioServer.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\TuioTime.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\UdpReceiver.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\UdpSender.h" />
+    <ClInclude Include="..\lib\TUIO11_CPP\TUIO\WebSockSender.h" />
+    <ClInclude Include="..\src\EventToTuio.h" />
+    <ClInclude Include="..\src\Text.h" />
+    <ClInclude Include="..\src\TouchPoint.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\MultiTouchBasicApp.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\oscpack\osc\OscTypes.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\FlashSender.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\OneEuroFilter.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\OscReceiver.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TcpReceiver.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TcpSender.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioBlob.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioClient.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioContainer.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioCursor.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioDispatcher.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioManager.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioObject.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioPoint.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioServer.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\TuioTime.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\UdpReceiver.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\UdpSender.cpp" />
+    <ClCompile Include="..\lib\TUIO11_CPP\TUIO\WebSockSender.cpp" />
+    <ClCompile Include="..\src\EventToTuio.cpp" />
+    <ClCompile Include="..\src\Text.cpp" />
+    <ClCompile Include="..\src\TouchBroadcastApp.cpp" />
+    <ClCompile Include="..\src\TouchPoint.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

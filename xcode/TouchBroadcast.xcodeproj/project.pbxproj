@@ -1,0 +1,785 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		9A5FC37BB2DD419FA339E2FD /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24997952CB924A86AC17907F /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				B70D728E4FF0468CB5A8BF8E /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		CE503E4687ED46A7BED4AED0 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C7EE5F3DC4674B778260CDF0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				73D3FB8F1B1D4FD78A0F4C5A /* CMake Rules */,
+			);
+			dependencies = (
+				696CEA13B1304E6B9226B90D /* PBXTargetDependency */,
+				76C948EA36304211A2D37F1E /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		03638C9B94994B69BE9DC715 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp */ = {isa = PBXBuildFile; fileRef = 3B492AD88AFF428C818C2F7A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp */; };
+		044AAB16930B44E4B6302919 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp */ = {isa = PBXBuildFile; fileRef = 28926581068647359407FEBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp */; };
+		0D74DBF46B4F4C93A11955F8 /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = EC12A8496E2248CB8F543F4D /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */; };
+		2143E3C45C5D422195489B20 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioPoint.cpp */ = {isa = PBXBuildFile; fileRef = 30C6B773B43749C0B5CE5A2D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioPoint.cpp */; };
+		249867B9F7C244A48358D2B7 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp */ = {isa = PBXBuildFile; fileRef = 48ADE147160347028389B797 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp */; };
+		26F1ECDC5C9C4A5B9A3CF4A1 /* /Users/mark/code/TouchBroadcast/src/EventToTuio.cpp */ = {isa = PBXBuildFile; fileRef = 9709E8492FBF4D7788DC33FF /* /Users/mark/code/TouchBroadcast/src/EventToTuio.cpp */; };
+		28BCD07605BF48A39FB8699F /* /Users/mark/code/cinder_master/samples/data/CinderApp.icns */ = {isa = PBXBuildFile; fileRef = 2342FF0E503843228C00E9C9 /* /Users/mark/code/cinder_master/samples/data/CinderApp.icns */; };
+		2AFE86DED55645CEAF833E50 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioCursor.cpp */ = {isa = PBXBuildFile; fileRef = 9560E7FCEEBB471EA36EA04C /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioCursor.cpp */; };
+		300E5BC14C1C4CE2AECCA259 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp */ = {isa = PBXBuildFile; fileRef = 2A6315EE40984C38917EAA98 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp */; };
+		5B1A8CA34C1147ABA6FFBC53 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp */ = {isa = PBXBuildFile; fileRef = B30B6B0A9770420AB6C6666E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp */; };
+		603E0BF2EA4C48FDB0ECB472 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/WebSockSender.cpp */ = {isa = PBXBuildFile; fileRef = F364D0B0BB25460794867433 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/WebSockSender.cpp */; };
+		6652326A2BE94D22921DEA17 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioContainer.cpp */ = {isa = PBXBuildFile; fileRef = 3BF438290B63466D84FD8017 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioContainer.cpp */; };
+		75D7885DC2DF4DACB856C17B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioBlob.cpp */ = {isa = PBXBuildFile; fileRef = D3EC763E10234E3BBB2B7843 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioBlob.cpp */; };
+		7F7AEE6ED4314A638319B11B /* /Users/mark/code/TouchBroadcast/src/TouchPoint.cpp */ = {isa = PBXBuildFile; fileRef = 787FDCBB4C6E4C21B88B3E9E /* /Users/mark/code/TouchBroadcast/src/TouchPoint.cpp */; };
+		8AA49B9233604E8FA9BE3D5B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioTime.cpp */ = {isa = PBXBuildFile; fileRef = 1C5DE4C3FEA64380A08246A0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioTime.cpp */; };
+		939E8A2CF9B2427490B3421E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpReceiver.cpp */ = {isa = PBXBuildFile; fileRef = 8DB1B6B210D44AB9B0B8AD2B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpReceiver.cpp */; };
+		97BB909339BA40B59496CDA7 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpReceiver.cpp */ = {isa = PBXBuildFile; fileRef = C99A8485AE7B4693A74AF82D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpReceiver.cpp */; };
+		A3E6219529E4420FB17B9CBC /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OscReceiver.cpp */ = {isa = PBXBuildFile; fileRef = 608EDC3677484DA3B20278F0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OscReceiver.cpp */; };
+		AD09474274CA4A32A5DB0F6C /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpSender.cpp */ = {isa = PBXBuildFile; fileRef = 87D875EF49754EB7A04783B8 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpSender.cpp */; };
+		AD2000C5529D4C6682146DB1 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioObject.cpp */ = {isa = PBXBuildFile; fileRef = F30D4DB21DD844B48DFD233A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioObject.cpp */; };
+		B143CA28DF344FAA85DA3861 /* /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist */ = {isa = PBXBuildFile; fileRef = F86A91FEFFB74676A881FE08 /* /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist */; };
+		B9ED39F7E8D34A2D800F787F /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpSender.cpp */ = {isa = PBXBuildFile; fileRef = E4A299575E92431B96F07DBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpSender.cpp */; };
+		C89C1925B7AD4F40BEF8FEA6 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioClient.cpp */ = {isa = PBXBuildFile; fileRef = 666339ABE8B24F1C92D374AB /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioClient.cpp */; };
+		D12053DDEC8F420793F5E7C2 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp */ = {isa = PBXBuildFile; fileRef = 4C02E7FC06F94CB18618CA19 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp */; };
+		DDDBA8D6B8AF43508AE9BD3C /* /Users/mark/code/TouchBroadcast/src/TouchBroadcastApp.cpp */ = {isa = PBXBuildFile; fileRef = 361C29885EBD4631955DE955 /* /Users/mark/code/TouchBroadcast/src/TouchBroadcastApp.cpp */; };
+		E20324BB9F6E48D28237FBFE /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioManager.cpp */ = {isa = PBXBuildFile; fileRef = 43FE7992908149FBBC2CE34F /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioManager.cpp */; };
+		E849843E32984A0FB6126DB1 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp */ = {isa = PBXBuildFile; fileRef = 74E301CB57E44531AD063F35 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp */; };
+		EEB83D4EFB5749C79C7C1DD8 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp */ = {isa = PBXBuildFile; fileRef = FC98F692A3A24313BE80C760 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp */; };
+		F0A6BE8927124E4B877A7408 /* /Users/mark/code/TouchBroadcast/src/Text.cpp */ = {isa = PBXBuildFile; fileRef = 0F042A5CF35D45DA82A6002A /* /Users/mark/code/TouchBroadcast/src/Text.cpp */; };
+		F3A399AB64104B7DAA9A7FF3 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/FlashSender.cpp */ = {isa = PBXBuildFile; fileRef = C0EA5521E7674F1FBA45DF5D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/FlashSender.cpp */; };
+		F4481F30D1DF4C43A4E95415 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioServer.cpp */ = {isa = PBXBuildFile; fileRef = CBBA6CDE6B024C6A8B11B364 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioServer.cpp */; };
+		FF8680032ABC4436B48E901E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp */ = {isa = PBXBuildFile; fileRef = 83AEDD21EE814A0E8F2387AE /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		037D9B3ECCA1421087CC430D /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		207D056CBFB04D6AA5F57727 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		9033798EE0A448C09AE2EDD3 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		C5F86080F9E444B0A7E87100 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		1127BF26BEEB499EAC598ABE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDA3BB0789084E7BAA75810E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FC37BB2DD419FA339E2FD;
+			remoteInfo = ZERO_CHECK;
+		};
+		4896D1868F7E4F99AABF5054 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDA3BB0789084E7BAA75810E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFA3602B979C4C2485D1C4AC;
+			remoteInfo = TouchBroadcast;
+		};
+		A66A44003BEF48FBAC2206A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDA3BB0789084E7BAA75810E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5FC37BB2DD419FA339E2FD;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F042A5CF35D45DA82A6002A /* /Users/mark/code/TouchBroadcast/src/Text.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Text.cpp; path = ../../src/Text.cpp; sourceTree = SOURCE_ROOT; };
+		19EC59BF34B04158BE5FCEB4 /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		1B69AE9174FF4CD4B2ABE6D5 /* TouchBroadcast */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = TouchBroadcast; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C5DE4C3FEA64380A08246A0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioTime.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioTime.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioTime.cpp; sourceTree = SOURCE_ROOT; };
+		2342FF0E503843228C00E9C9 /* /Users/mark/code/cinder_master/samples/data/CinderApp.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = CinderApp.icns; path = ../../../cinder_master/samples/data/CinderApp.icns; sourceTree = SOURCE_ROOT; };
+		28926581068647359407FEBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = IpEndpointName.cpp; path = ../../lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp; sourceTree = SOURCE_ROOT; };
+		2A6315EE40984C38917EAA98 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscReceivedElements.cpp; path = ../../lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
+		30C6B773B43749C0B5CE5A2D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioPoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioPoint.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioPoint.cpp; sourceTree = SOURCE_ROOT; };
+		361C29885EBD4631955DE955 /* /Users/mark/code/TouchBroadcast/src/TouchBroadcastApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TouchBroadcastApp.cpp; path = ../../src/TouchBroadcastApp.cpp; sourceTree = SOURCE_ROOT; };
+		3B492AD88AFF428C818C2F7A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioDispatcher.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp; sourceTree = SOURCE_ROOT; };
+		3BF438290B63466D84FD8017 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioContainer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioContainer.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioContainer.cpp; sourceTree = SOURCE_ROOT; };
+		43FE7992908149FBBC2CE34F /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioManager.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioManager.cpp; sourceTree = SOURCE_ROOT; };
+		48ADE147160347028389B797 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscOutboundPacketStream.cpp; path = ../../lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp; sourceTree = SOURCE_ROOT; };
+		4C02E7FC06F94CB18618CA19 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscTypes.cpp; path = ../../lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp; sourceTree = SOURCE_ROOT; };
+		608EDC3677484DA3B20278F0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OscReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscReceiver.cpp; path = ../../lib/TUIO11_CPP/TUIO/OscReceiver.cpp; sourceTree = SOURCE_ROOT; };
+		666339ABE8B24F1C92D374AB /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioClient.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioClient.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioClient.cpp; sourceTree = SOURCE_ROOT; };
+		74E301CB57E44531AD063F35 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UdpSocket.cpp; path = ../../lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp; sourceTree = SOURCE_ROOT; };
+		787FDCBB4C6E4C21B88B3E9E /* /Users/mark/code/TouchBroadcast/src/TouchPoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TouchPoint.cpp; path = ../../src/TouchPoint.cpp; sourceTree = SOURCE_ROOT; };
+		83AEDD21EE814A0E8F2387AE /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OneEuroFilter.cpp; path = ../../lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp; sourceTree = SOURCE_ROOT; };
+		87D875EF49754EB7A04783B8 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpSender.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TcpSender.cpp; path = ../../lib/TUIO11_CPP/TUIO/TcpSender.cpp; sourceTree = SOURCE_ROOT; };
+		8DB1B6B210D44AB9B0B8AD2B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TcpReceiver.cpp; path = ../../lib/TUIO11_CPP/TUIO/TcpReceiver.cpp; sourceTree = SOURCE_ROOT; };
+		9560E7FCEEBB471EA36EA04C /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioCursor.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioCursor.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioCursor.cpp; sourceTree = SOURCE_ROOT; };
+		9709E8492FBF4D7788DC33FF /* /Users/mark/code/TouchBroadcast/src/EventToTuio.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = EventToTuio.cpp; path = ../../src/EventToTuio.cpp; sourceTree = SOURCE_ROOT; };
+		B30B6B0A9770420AB6C6666E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OscPrintReceivedElements.cpp; path = ../../lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
+		C0EA5521E7674F1FBA45DF5D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/FlashSender.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FlashSender.cpp; path = ../../lib/TUIO11_CPP/TUIO/FlashSender.cpp; sourceTree = SOURCE_ROOT; };
+		C99A8485AE7B4693A74AF82D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UdpReceiver.cpp; path = ../../lib/TUIO11_CPP/TUIO/UdpReceiver.cpp; sourceTree = SOURCE_ROOT; };
+		CBBA6CDE6B024C6A8B11B364 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioServer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioServer.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioServer.cpp; sourceTree = SOURCE_ROOT; };
+		D3EC763E10234E3BBB2B7843 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioBlob.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioBlob.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioBlob.cpp; sourceTree = SOURCE_ROOT; };
+		E4A299575E92431B96F07DBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpSender.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UdpSender.cpp; path = ../../lib/TUIO11_CPP/TUIO/UdpSender.cpp; sourceTree = SOURCE_ROOT; };
+		EC12A8496E2248CB8F543F4D /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		F30D4DB21DD844B48DFD233A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TuioObject.cpp; path = ../../lib/TUIO11_CPP/TUIO/TuioObject.cpp; sourceTree = SOURCE_ROOT; };
+		F364D0B0BB25460794867433 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/WebSockSender.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = WebSockSender.cpp; path = ../../lib/TUIO11_CPP/TUIO/WebSockSender.cpp; sourceTree = SOURCE_ROOT; };
+		F86A91FEFFB74676A881FE08 /* /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; name = Info.plist; path = ../../xcode/CMakeFiles/TouchBroadcast.dir/Info.plist; sourceTree = SOURCE_ROOT; };
+		FC98F692A3A24313BE80C760 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = NetworkingUtils.cpp; path = ../../lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		437E8B281E254B30948BF4AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B69AE9174FF4CD4B2ABE6D5 /* TouchBroadcast */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B56E2706AA84DB6B68C1B5C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F86A91FEFFB74676A881FE08 /* /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5426E162D8FF434B8BE8EBF4 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0EA5521E7674F1FBA45DF5D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/FlashSender.cpp */,
+				83AEDD21EE814A0E8F2387AE /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp */,
+				608EDC3677484DA3B20278F0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OscReceiver.cpp */,
+				8DB1B6B210D44AB9B0B8AD2B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpReceiver.cpp */,
+				87D875EF49754EB7A04783B8 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpSender.cpp */,
+				D3EC763E10234E3BBB2B7843 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioBlob.cpp */,
+				666339ABE8B24F1C92D374AB /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioClient.cpp */,
+				3BF438290B63466D84FD8017 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioContainer.cpp */,
+				9560E7FCEEBB471EA36EA04C /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioCursor.cpp */,
+				3B492AD88AFF428C818C2F7A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp */,
+				43FE7992908149FBBC2CE34F /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioManager.cpp */,
+				F30D4DB21DD844B48DFD233A /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioObject.cpp */,
+				30C6B773B43749C0B5CE5A2D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioPoint.cpp */,
+				CBBA6CDE6B024C6A8B11B364 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioServer.cpp */,
+				1C5DE4C3FEA64380A08246A0 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioTime.cpp */,
+				C99A8485AE7B4693A74AF82D /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpReceiver.cpp */,
+				E4A299575E92431B96F07DBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpSender.cpp */,
+				F364D0B0BB25460794867433 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/WebSockSender.cpp */,
+				28926581068647359407FEBF /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp */,
+				FC98F692A3A24313BE80C760 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp */,
+				74E301CB57E44531AD063F35 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp */,
+				48ADE147160347028389B797 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp */,
+				B30B6B0A9770420AB6C6666E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp */,
+				2A6315EE40984C38917EAA98 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp */,
+				4C02E7FC06F94CB18618CA19 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp */,
+				9709E8492FBF4D7788DC33FF /* /Users/mark/code/TouchBroadcast/src/EventToTuio.cpp */,
+				0F042A5CF35D45DA82A6002A /* /Users/mark/code/TouchBroadcast/src/Text.cpp */,
+				361C29885EBD4631955DE955 /* /Users/mark/code/TouchBroadcast/src/TouchBroadcastApp.cpp */,
+				787FDCBB4C6E4C21B88B3E9E /* /Users/mark/code/TouchBroadcast/src/TouchPoint.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		660F85053D724B35BA8BBC35 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		6EAB35B84E8B438B9610F22C /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				660F85053D724B35BA8BBC35 /* CMake Rules */,
+				19EC59BF34B04158BE5FCEB4 /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		7465F3F9B23942CA9FB7EAFF = {
+			isa = PBXGroup;
+			children = (
+				EECCABA5E8FA4B4C9A22C139 /* TouchBroadcast */,
+				6EAB35B84E8B438B9610F22C /* ALL_BUILD */,
+				437E8B281E254B30948BF4AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EECCABA5E8FA4B4C9A22C139 /* TouchBroadcast */ = {
+			isa = PBXGroup;
+			children = (
+				5426E162D8FF434B8BE8EBF4 /* Source Files */,
+				4B56E2706AA84DB6B68C1B5C /* Resources */,
+				EC12A8496E2248CB8F543F4D /* /Users/mark/code/TouchBroadcast/proj/cmake/CMakeLists.txt */,
+				2342FF0E503843228C00E9C9 /* /Users/mark/code/cinder_master/samples/data/CinderApp.icns */,
+			);
+			name = TouchBroadcast;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DFA3602B979C4C2485D1C4AC /* TouchBroadcast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B575C3F2266A447DB2B3F1C2 /* Build configuration list for PBXNativeTarget "TouchBroadcast" */;
+			buildPhases = (
+				640CAD8A288C43E69C455F52 /* Resources */,
+				AC4AB1C8EA2C47A4BCB7B18F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C16DDE59CCF242FBB9AB3B61 /* PBXTargetDependency */,
+			);
+			name = TouchBroadcast;
+			productName = TouchBroadcast;
+			productReference = 1B69AE9174FF4CD4B2ABE6D5 /* TouchBroadcast */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDA3BB0789084E7BAA75810E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1010;
+			};
+			buildConfigurationList = 20111FF51AF448B1ABC1C2D0 /* Build configuration list for PBXProject "TouchBroadcast" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				207D056CBFB04D6AA5F57727 /* Debug */,
+				037D9B3ECCA1421087CC430D /* Release */,
+				C5F86080F9E444B0A7E87100 /* MinSizeRel */,
+				9033798EE0A448C09AE2EDD3 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 7465F3F9B23942CA9FB7EAFF;
+			projectDirPath = /Users/mark/code/TouchBroadcast/proj/cmake;
+			projectRoot = "";
+			targets = (
+				CE503E4687ED46A7BED4AED0 /* ALL_BUILD */,
+				DFA3602B979C4C2485D1C4AC /* TouchBroadcast */,
+				9A5FC37BB2DD419FA339E2FD /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73D3FB8F1B1D4FD78A0F4C5A /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/mark/code/TouchBroadcast/xcode -f /Users/mark/code/TouchBroadcast/xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		B70D728E4FF0468CB5A8BF8E /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/mark/code/TouchBroadcast/xcode -f /Users/mark/code/TouchBroadcast/xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		E564F740B7394EA6916AB795 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		ED63A6131649471ABBA25AD9 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		640CAD8A288C43E69C455F52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BCD07605BF48A39FB8699F /* /Users/mark/code/cinder_master/samples/data/CinderApp.icns */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC4AB1C8EA2C47A4BCB7B18F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3A399AB64104B7DAA9A7FF3 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/FlashSender.cpp */,
+				FF8680032ABC4436B48E901E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OneEuroFilter.cpp */,
+				A3E6219529E4420FB17B9CBC /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/OscReceiver.cpp */,
+				939E8A2CF9B2427490B3421E /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpReceiver.cpp */,
+				AD09474274CA4A32A5DB0F6C /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TcpSender.cpp */,
+				75D7885DC2DF4DACB856C17B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioBlob.cpp */,
+				C89C1925B7AD4F40BEF8FEA6 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioClient.cpp */,
+				6652326A2BE94D22921DEA17 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioContainer.cpp */,
+				2AFE86DED55645CEAF833E50 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioCursor.cpp */,
+				03638C9B94994B69BE9DC715 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioDispatcher.cpp */,
+				E20324BB9F6E48D28237FBFE /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioManager.cpp */,
+				AD2000C5529D4C6682146DB1 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioObject.cpp */,
+				2143E3C45C5D422195489B20 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioPoint.cpp */,
+				F4481F30D1DF4C43A4E95415 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioServer.cpp */,
+				8AA49B9233604E8FA9BE3D5B /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/TuioTime.cpp */,
+				97BB909339BA40B59496CDA7 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpReceiver.cpp */,
+				B9ED39F7E8D34A2D800F787F /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/UdpSender.cpp */,
+				603E0BF2EA4C48FDB0ECB472 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/TUIO/WebSockSender.cpp */,
+				044AAB16930B44E4B6302919 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/IpEndpointName.cpp */,
+				EEB83D4EFB5749C79C7C1DD8 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/NetworkingUtils.cpp */,
+				E849843E32984A0FB6126DB1 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/ip/posix/UdpSocket.cpp */,
+				249867B9F7C244A48358D2B7 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscOutboundPacketStream.cpp */,
+				5B1A8CA34C1147ABA6FFBC53 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscPrintReceivedElements.cpp */,
+				300E5BC14C1C4CE2AECCA259 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscReceivedElements.cpp */,
+				D12053DDEC8F420793F5E7C2 /* /Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack/osc/OscTypes.cpp */,
+				26F1ECDC5C9C4A5B9A3CF4A1 /* /Users/mark/code/TouchBroadcast/src/EventToTuio.cpp */,
+				F0A6BE8927124E4B877A7408 /* /Users/mark/code/TouchBroadcast/src/Text.cpp */,
+				DDDBA8D6B8AF43508AE9BD3C /* /Users/mark/code/TouchBroadcast/src/TouchBroadcastApp.cpp */,
+				7F7AEE6ED4314A638319B11B /* /Users/mark/code/TouchBroadcast/src/TouchPoint.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		696CEA13B1304E6B9226B90D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A5FC37BB2DD419FA339E2FD /* ZERO_CHECK */;
+			targetProxy = A66A44003BEF48FBAC2206A7 /* PBXContainerItemProxy */;
+		};
+		76C948EA36304211A2D37F1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFA3602B979C4C2485D1C4AC /* TouchBroadcast */;
+			targetProxy = 4896D1868F7E4F99AABF5054 /* PBXContainerItemProxy */;
+		};
+		C16DDE59CCF242FBB9AB3B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A5FC37BB2DD419FA339E2FD /* ZERO_CHECK */;
+			targetProxy = 1127BF26BEEB499EAC598ABE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0682F005998E4182971D945C /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		073C8ADDAB0E474AACC009F0 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		0EF299CDA88841C9A237C4C7 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode/build;
+			};
+			name = RelWithDebInfo;
+		};
+		6A0F1F01D0EA459FAE480EC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		72506FA03E374CA4BB6EA6F2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		79BB7924D0CF43D3AA8F9296 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/mark/code/TouchBroadcast/xcode/TouchBroadcast/Release;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY,FT_DEBUG_LEVEL_TRACE);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP,/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack);
+				INFOPLIST_FILE = /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=c++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/mark/code/cinder_master/lib/macosx/Debug/libcinder.a /Users/mark/code/cinder_master/lib/macosx/libboost_system.a /Users/mark/code/cinder_master/lib/macosx/libboost_filesystem.a -framework Cocoa -framework OpenGL -framework AudioToolbox -framework AVFoundation -framework AudioUnit -framework CoreAudio -framework CoreMedia -framework CoreVideo -framework Accelerate -framework IOSurface -framework IOKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TouchBroadcast;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				SYSTEM_HEADER_SEARCH_PATHS = (/Users/mark/code/cinder_master/include);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		80D0334419824F779E80509D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/mark/code/TouchBroadcast/xcode/TouchBroadcast/RelWithDebInfo;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY,FT_DEBUG_LEVEL_TRACE);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP,/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack);
+				INFOPLIST_FILE = /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=c++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/mark/code/cinder_master/lib/macosx/Debug/libcinder.a /Users/mark/code/cinder_master/lib/macosx/libboost_system.a /Users/mark/code/cinder_master/lib/macosx/libboost_filesystem.a -framework Cocoa -framework OpenGL -framework AudioToolbox -framework AVFoundation -framework AudioUnit -framework CoreAudio -framework CoreMedia -framework CoreVideo -framework Accelerate -framework IOSurface -framework IOKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TouchBroadcast;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				SYSTEM_HEADER_SEARCH_PATHS = (/Users/mark/code/cinder_master/include);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		9B3C57A4BA56445D86683216 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode/build;
+			};
+			name = Debug;
+		};
+		A13AE2E90E4648349A09E7E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/mark/code/TouchBroadcast/xcode/TouchBroadcast/Debug;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY,FT_DEBUG_LEVEL_TRACE);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP,/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack);
+				INFOPLIST_FILE = /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=c++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/mark/code/cinder_master/lib/macosx/Debug/libcinder.a /Users/mark/code/cinder_master/lib/macosx/libboost_system.a /Users/mark/code/cinder_master/lib/macosx/libboost_filesystem.a -framework Cocoa -framework OpenGL -framework AudioToolbox -framework AVFoundation -framework AudioUnit -framework CoreAudio -framework CoreMedia -framework CoreVideo -framework Accelerate -framework IOSurface -framework IOKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TouchBroadcast;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				SYSTEM_HEADER_SEARCH_PATHS = (/Users/mark/code/cinder_master/include);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		ACE6A2237C284F50B82E75CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		B7B45CE0DE0548B7AF9DC9EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		CD22C06F2E954E408FC553D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		DB499F64861B472D8B937D8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode/build;
+			};
+			name = Release;
+		};
+		E3559666F0474E30BF8C42D5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode/build;
+			};
+			name = MinSizeRel;
+		};
+		EE2E7167BB584FF5B736C294 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/mark/code/TouchBroadcast/xcode/TouchBroadcast/MinSizeRel;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY,FT_DEBUG_LEVEL_TRACE);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP,/Users/mark/code/TouchBroadcast/lib/TUIO11_CPP/oscpack);
+				INFOPLIST_FILE = /Users/mark/code/TouchBroadcast/xcode/CMakeFiles/TouchBroadcast.dir/Info.plist;
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=c++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/mark/code/cinder_master/lib/macosx/Debug/libcinder.a /Users/mark/code/cinder_master/lib/macosx/libboost_system.a /Users/mark/code/cinder_master/lib/macosx/libboost_filesystem.a -framework Cocoa -framework OpenGL -framework AudioToolbox -framework AVFoundation -framework AudioUnit -framework CoreAudio -framework CoreMedia -framework CoreVideo -framework Accelerate -framework IOSurface -framework IOKit";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = TouchBroadcast;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				SYSTEM_HEADER_SEARCH_PATHS = (/Users/mark/code/cinder_master/include);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		FE6F3B96203443F4B1D8333C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/mark/code/TouchBroadcast/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20111FF51AF448B1ABC1C2D0 /* Build configuration list for PBXProject "TouchBroadcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B3C57A4BA56445D86683216 /* Debug */,
+				DB499F64861B472D8B937D8E /* Release */,
+				E3559666F0474E30BF8C42D5 /* MinSizeRel */,
+				0EF299CDA88841C9A237C4C7 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		24997952CB924A86AC17907F /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A0F1F01D0EA459FAE480EC0 /* Debug */,
+				B7B45CE0DE0548B7AF9DC9EE /* Release */,
+				0682F005998E4182971D945C /* MinSizeRel */,
+				72506FA03E374CA4BB6EA6F2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B575C3F2266A447DB2B3F1C2 /* Build configuration list for PBXNativeTarget "TouchBroadcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A13AE2E90E4648349A09E7E2 /* Debug */,
+				79BB7924D0CF43D3AA8F9296 /* Release */,
+				EE2E7167BB584FF5B736C294 /* MinSizeRel */,
+				80D0334419824F779E80509D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C7EE5F3DC4674B778260CDF0 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD22C06F2E954E408FC553D6 /* Debug */,
+				ACE6A2237C284F50B82E75CA /* Release */,
+				073C8ADDAB0E474AACC009F0 /* MinSizeRel */,
+				FE6F3B96203443F4B1D8333C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDA3BB0789084E7BAA75810E /* Project object */;
+}
