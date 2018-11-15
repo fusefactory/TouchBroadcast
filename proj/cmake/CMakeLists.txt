@@ -3,8 +3,10 @@ set( CMAKE_VERBOSE_MAKEFILE ON )
 
 project( TouchBroadcast )
 
-get_filename_component( CINDER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../cinder_master/" ABSOLUTE )
 get_filename_component( APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../" ABSOLUTE )
+# get_filename_component( CINDER_PATH "${APP_PATH}/../cinder_master/" ABSOLUTE )
+get_filename_component( CINDER_PATH "${APP_PATH}/../../" ABSOLUTE )
+
 get_filename_component( TUIO_PATH "${APP_PATH}/lib/TUIO11_CPP/" ABSOLUTE )
 
 include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )

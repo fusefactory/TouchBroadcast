@@ -23,11 +23,6 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-const std::string destinationHost = "127.0.0.1";
-const uint16_t destinationPort = 3333;
-const uint16_t localPort = 10000;
-
-
 class TouchBroadcastApp : public App {
 	public:
 
@@ -58,6 +53,10 @@ class TouchBroadcastApp : public App {
 		std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
 		#endif
 
+		std::string destinationHost = "127.0.0.1";
+		uint16_t destinationPort = 3333;
+		uint16_t localPort = 10000;
+
 		Text helpText;
 		// OSC
 		// void onSendError( asio::error_code error );
@@ -81,6 +80,62 @@ void prepareSettings( TouchBroadcastApp::Settings *settings )
 
 void TouchBroadcastApp::setup()
 {
+	{ // process command line arguments
+		auto& args = getCommandLineArgs();
+		for (int i=0; i<args.size(); i++) {
+			auto& arg = args[i];
+			// // CI_LOG_I("args: " << arg);
+			//
+			if (arg == "-h" || arg == "--help") {
+				std::cout
+					<< std::endl
+					<< "TouchBroadcaster" << std::endl
+					<< "================" << std::endl
+					<< std::endl
+					<< "-h, --help\tShow This Help Message"<< std::endl
+					<< "-i, --ip <ip>\t Set Destination IP address"<< std::endl
+					<< "-p, --port <port>\tSet Destination Port"<< std::endl
+					<< "-l, --local-port <port>\tSet Local Port"<< std::endl
+					<< std::endl;
+				if (args.size() == 1) {
+					quit();
+					return;
+				}
+			}
+
+			if(arg == "-i" || arg == "--ip") {
+				i++;
+				destinationHost = args[i];
+			}
+
+			else if(arg == "-p" || arg == "--port") {
+				i++;
+				destinationPort = std::atoi(args[i].c_str());
+			}
+
+			else if(arg == "-l" || arg == "--local-port") {
+				i++;
+				destinationPort = std::atoi(args[i].c_str());
+			}
+
+			else if (i == 0) {
+				destinationHost = arg;
+			}
+
+			else if(i == 1) {
+				destinationPort = std::atoi(arg.c_str());
+			}
+
+			else if(i == 2) {
+				localPort = std::atoi(arg.c_str());
+			}
+
+			else {
+				std::cerr << "unknown argument: " << arg << std::endl;
+			}
+		}
+	}
+
 	CI_LOG_I("Initialising TuioServer...");
 	this->tuioServerRef = std::make_shared<TUIO::TuioServer>(destinationHost.c_str(), destinationPort);
 	this->tuioServerRef->setSourceName("TouchBroadcast");
