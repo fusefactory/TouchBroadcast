@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MultiTouchBasic.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  TouchBroadcastApp.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\include\cinder\filesystem.h(40): warning C4996: 'std::tr2': warning STL4018: The non-Standard std::tr2::sys namespace is deprecated and will be REMOVED. It is superseded by std::experimental::filesystem. You can define _SILENCE_TR2_SYS_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\experimental\filesystem(3188): note: see declaration of 'std::tr2'
+  Unknown compiler version - please run the configure tests and report the results
+  Generating code
+  44 of 2570 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
+    20 functions were new in current compilation
+    96 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MultiTouchBasic.vcxproj -> C:\Users\mark\code\cinder_0.9.0_vc2013\samples\TouchBroadcast\vc2013\x64\Release\TouchBroadcast.exe

@@ -1,0 +1,7 @@
+﻿  MultiTouchBasicApp.cpp
+c:\users\mark\code\cinder_0.9.0_vc2013\include\cinder\filesystem.h(40): warning C4996: 'std::tr2': warning STL4018: The non-Standard std::tr2::sys namespace is deprecated and will be REMOVED. It is superseded by std::experimental::filesystem. You can define _SILENCE_TR2_SYS_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\experimental\filesystem(3188): note: see declaration of 'std::tr2'
+  Unknown compiler version - please run the configure tests and report the results
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\multitouchbasic\src\multitouchbasicapp.cpp(28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mark\code\cinder_0.9.0_vc2013\samples\multitouchbasic\src\multitouchbasicapp.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  MultiTouchBasic.vcxproj -> C:\Users\mark\code\cinder_0.9.0_vc2013\samples\MultiTouchBasic\vc2013\x64\Debug\MultiTouchBasic.exe

@@ -7,6 +7,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <sstream>      // std::stringstream
 
 #include "TUIO/TuioServer.h"
 #include "EventToTuio.h"
@@ -44,6 +45,8 @@ class TouchBroadcastApp : public App {
 		void update() override;
 		void draw() override;
 
+		void updateHelpText();
+
 	private:
 
 		vec2 normalise(const vec2& vec);
@@ -59,10 +62,10 @@ class TouchBroadcastApp : public App {
 		// OSC
 		// void onSendError( asio::error_code error );
 		// Sender	mSender;
-		bool	mIsConnected = true;
 		bool bDrawHelp = true;
 		bool commitOnEvent = true;
 		bool commitAtInterval = false; // TODO
+		bool bMouseEnabled = false;
 };
 
 void prepareSettings( TouchBroadcastApp::Settings *settings )
@@ -83,25 +86,13 @@ void TouchBroadcastApp::setup()
 	this->tuioServerRef->setSourceName("TouchBroadcast");
 	this->eventToTuioRef = std::make_shared<EventToTuio>(this->tuioServerRef);
 
-	this->helpText.setPos(ci::vec2(10,10));
-	this->helpText.setScale(ci::vec2(1,1));
-	this->helpText.setFontSize(20);
-	this->helpText.setText("TouchBroadcaster"
-		"\n==============="
-		"\nF - toggle fullscreen"
-		"\nT - toggle always-on-top"
-		"\nH - draw help overlay"
-		"\nV - toggle visualisation"
-		"\n \n \n \n "
-		"\nDO NOT CLOSE"
-		"\n "
-		"\nTHIS APPLICATION SENDS TOUCH-SCREEN EVENTS TO THE INTERACTIVE TABLE APPLICATION");
-
 	// #ifdef TOUCH_POINTS
 	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
 	// #endif
 
   setFullScreen(true);
+
+	this->updateHelpText();
 }
 
 vec2 TouchBroadcastApp::normalise(const vec2& vec) {
@@ -147,6 +138,8 @@ void TouchBroadcastApp::touchesEnded( TouchEvent event )
 
 void TouchBroadcastApp::mouseDown( MouseEvent event )
 {
+	if (!this->bMouseEnabled) return;
+
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchDown(normpos.x, normpos.y);
 
@@ -157,6 +150,8 @@ void TouchBroadcastApp::mouseDown( MouseEvent event )
 
 void TouchBroadcastApp::mouseDrag( MouseEvent event )
 {
+	if (!this->bMouseEnabled) return;
+
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 
@@ -167,6 +162,8 @@ void TouchBroadcastApp::mouseDrag( MouseEvent event )
 
 void TouchBroadcastApp::mouseUp( MouseEvent event )
 {
+	if (!this->bMouseEnabled) return;
+
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 
@@ -179,22 +176,27 @@ void TouchBroadcastApp::keyDown( KeyEvent event )
 {
 	if( event.getChar() == 'f' ) {
 		setFullScreen(!isFullScreen());
+		updateHelpText();
 	}
 
   if( event.getChar() == 't' ) {
     getWindow()->setAlwaysOnTop(!getWindow()->isAlwaysOnTop());
+		updateHelpText();
   }
 
 	if( event.getChar() == 'h' ) {
 		bDrawHelp = !bDrawHelp;
+		updateHelpText();
 	}
-
-	if (event.getCode() == KeyEvent::KEY_ESCAPE) {
-		quit();
-	}
-
+	if (event.getCode() == KeyEvent::KEY_ESCAPE) quit();
 	if (event.getChar() == 'v') {
 		this->touchPointManRef = this->touchPointManRef ? nullptr : std::make_shared<TouchPointManager>();
+		updateHelpText();
+	}
+
+	if (event.getChar() == 'm') {
+		this->bMouseEnabled = !this->bMouseEnabled;
+		updateHelpText();
 	}
 }
 
@@ -221,4 +223,24 @@ void TouchBroadcastApp::draw()
 	if (bDrawHelp) this->helpText.draw();
 }
 
+void TouchBroadcastApp::updateHelpText() {
+	this->helpText.setPos(ci::vec2(10,10));
+	this->helpText.setScale(ci::vec2(1,1));
+	this->helpText.setFontSize(20);
+
+	std::stringstream ss;
+	ss << "TouchBroadcast"
+		<< "\n============="
+		<< "\nF - toggle fullscreen (" << (isFullScreen() ? "ON" : "OFF") << ")"
+		<< "\nT - toggle always-on-top (" << (getWindow()->isAlwaysOnTop() ? "ON" : "OFF") << ")"
+		<< "\nV - toggle visualisation (" << (this->touchPointManRef ? "ON" : "OFF") << ")"
+		<< "\nM - toggle mouse enabled (" << (this->bMouseEnabled ? "ON" : "OFF") << ")"
+		<< "\nH - draw help overlay"
+		<< "\n \n \n \n "
+		<< "\nDO NOT CLOSE"
+		<< "\n "
+		<< "\nTHIS APPLICATION SENDS TOUCH-SCREEN EVENTS TO THE INTERACTIVE TABLE APPLICATION";
+
+	this->helpText.setText(ss.str());
+}
 CINDER_APP( TouchBroadcastApp, RendererGl, prepareSettings )
