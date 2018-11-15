@@ -24,56 +24,56 @@ using namespace ci::app;
 using namespace std;
 
 class TouchBroadcastApp : public App {
-	public:
+public:
 
-		void	mouseDown( MouseEvent event ) override;
-		// void	mouseMove( MouseEvent event ) override {}
-		void	mouseDrag( MouseEvent event ) override;
-		void	mouseUp( MouseEvent event ) override;
+	void	mouseDown(MouseEvent event) override;
+	// void	mouseMove( MouseEvent event ) override {}
+	void	mouseDrag(MouseEvent event) override;
+	void	mouseUp(MouseEvent event) override;
 
-		void	touchesBegan( TouchEvent event ) override;
-		void	touchesMoved( TouchEvent event ) override;
-		void	touchesEnded( TouchEvent event ) override;
+	void	touchesBegan(TouchEvent event) override;
+	void	touchesMoved(TouchEvent event) override;
+	void	touchesEnded(TouchEvent event) override;
 
-		void keyDown( KeyEvent event ) override;
-		void setup() override;
-		void update() override;
-		void draw() override;
+	void keyDown(KeyEvent event) override;
+	void setup() override;
+	void update() override;
+	void draw() override;
 
-		void updateHelpText();
+	void updateHelpText();
 
-	private:
+private:
 
-		vec2 normalise(const vec2& vec);
+	vec2 normalise(const vec2& vec);
 
-		std::shared_ptr<EventToTuio> eventToTuioRef;
-		std::shared_ptr<TUIO::TuioServer> tuioServerRef;
+	std::shared_ptr<EventToTuio> eventToTuioRef;
+	std::shared_ptr<TUIO::TuioServer> tuioServerRef;
 
-		#ifdef TOUCH_POINTS
-		std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
-		#endif
+#ifdef TOUCH_POINTS
+	std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
+#endif
 
-		std::string destinationHost = "127.0.0.1";
-		uint16_t destinationPort = 3333;
-		uint16_t localPort = 10000;
+	std::string destinationHost = "127.0.0.1";
+	uint16_t destinationPort = 3333;
+	uint16_t localPort = 10000;
 
-		Text helpText;
-		// OSC
-		// void onSendError( asio::error_code error );
-		// Sender	mSender;
-		bool bDrawHelp = true;
-		bool commitOnEvent = true;
-		bool commitAtInterval = false; // TODO
-		bool bMouseEnabled = false;
+	Text helpText;
+	// OSC
+	// void onSendError( asio::error_code error );
+	// Sender	mSender;
+	bool bDrawHelp = true;
+	bool commitOnEvent = true;
+	bool commitAtInterval = false; // TODO
+	bool bMouseEnabled = false;
 };
 
-void prepareSettings( TouchBroadcastApp::Settings *settings )
+void prepareSettings(TouchBroadcastApp::Settings *settings)
 {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
-	settings->setMultiTouchEnabled( true );
-  settings->setAlwaysOnTop(true);
-  // settings->setDisplay( ci::Display::getDisplays()[0] );
+	settings->setMultiTouchEnabled(true);
+	settings->setAlwaysOnTop(true);
+	// settings->setDisplay( ci::Display::getDisplays()[0] );
 	// On mobile, if you disable multitouch then touch events will arrive via mouseDown(), mouseDrag(), etc.
 	//	settings->setMultiTouchEnabled( false );
 }
@@ -82,7 +82,7 @@ void TouchBroadcastApp::setup()
 {
 	{ // process command line arguments
 		auto& args = getCommandLineArgs();
-		for (int i=0; i<args.size(); i++) {
+		for (int i = 1; i<args.size(); i++) {
 			auto& arg = args[i];
 			// // CI_LOG_I("args: " << arg);
 			//
@@ -92,46 +92,48 @@ void TouchBroadcastApp::setup()
 					<< "TouchBroadcaster" << std::endl
 					<< "================" << std::endl
 					<< std::endl
-					<< "-h, --help\tShow This Help Message"<< std::endl
-					<< "-i, --ip <ip>\t Set Destination IP address"<< std::endl
-					<< "-p, --port <port>\tSet Destination Port"<< std::endl
-					<< "-l, --local-port <port>\tSet Local Port"<< std::endl
+					<< "USAGE:" << std::endl
+					<< "TouchBroadcaster [<destination-ip>] [<destination-port>] [<local-port>]" << std::endl
+					<< "  -h, --help\tShow This Help Message" << std::endl
+					<< "  -i, --ip <ip>\t Set Destination IP address" << std::endl
+					<< "  -p, --port <port>\tSet Destination Port" << std::endl
+					<< "  -l, --local-port <port>\tSet Local Port" << std::endl
 					<< std::endl;
-				if (args.size() == 1) {
+				if (args.size() == 2) {
 					quit();
 					return;
 				}
 			}
 
-			if(arg == "-i" || arg == "--ip") {
+			if (arg == "-i" || arg == "--ip") {
 				i++;
 				destinationHost = args[i];
 			}
 
-			else if(arg == "-p" || arg == "--port") {
+			else if (arg == "-p" || arg == "--port") {
 				i++;
 				destinationPort = std::atoi(args[i].c_str());
 			}
 
-			else if(arg == "-l" || arg == "--local-port") {
+			else if (arg == "-l" || arg == "--local-port") {
 				i++;
 				destinationPort = std::atoi(args[i].c_str());
 			}
 
-			else if (i == 0) {
+			else if (i == 1) {
 				destinationHost = arg;
 			}
 
-			else if(i == 1) {
+			else if (i == 2) {
 				destinationPort = std::atoi(arg.c_str());
 			}
 
-			else if(i == 2) {
+			else if (i == 3) {
 				localPort = std::atoi(arg.c_str());
 			}
 
 			else {
-				std::cerr << "unknown argument: " << arg << std::endl;
+				std::cout << "unknown argument: " << arg << std::endl;
 			}
 		}
 	}
@@ -145,7 +147,7 @@ void TouchBroadcastApp::setup()
 	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
 	// #endif
 
-  setFullScreen(true);
+	setFullScreen(true);
 
 	this->updateHelpText();
 }
@@ -154,92 +156,92 @@ vec2 TouchBroadcastApp::normalise(const vec2& vec) {
 	return vec2((float)vec.x / getWindowWidth(), (float)vec.y / getWindowHeight());
 }
 
-void TouchBroadcastApp::touchesBegan( TouchEvent event )
+void TouchBroadcastApp::touchesBegan(TouchEvent event)
 {
-	for(  auto &touch : event.getTouches() ) {
+	for (auto &touch : event.getTouches()) {
 		auto normpos = normalise(touch.getPos());
 		this->eventToTuioRef->touchDown(normpos.x, normpos.y);
 
-		#ifdef TOUCH_POINTS
-			if (this->touchPointManRef) this->touchPointManRef->add(touch.getId(), touch.getPos());
-		#endif
+#ifdef TOUCH_POINTS
+		if (this->touchPointManRef) this->touchPointManRef->add(touch.getId(), touch.getPos());
+#endif
 	}
 }
 
 
-void TouchBroadcastApp::touchesMoved( TouchEvent event )
+void TouchBroadcastApp::touchesMoved(TouchEvent event)
 {
-	for(  auto &touch : event.getTouches() ) {
+	for (auto &touch : event.getTouches()) {
 		auto normpos = normalise(touch.getPos());
 		this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 
-		#ifdef TOUCH_POINTS
-			if (this->touchPointManRef) this->touchPointManRef->update(touch.getId(), touch.getPos());
-		#endif
+#ifdef TOUCH_POINTS
+		if (this->touchPointManRef) this->touchPointManRef->update(touch.getId(), touch.getPos());
+#endif
 	}
 }
 
-void TouchBroadcastApp::touchesEnded( TouchEvent event )
+void TouchBroadcastApp::touchesEnded(TouchEvent event)
 {
-	for(  auto &touch : event.getTouches() ) {
+	for (auto &touch : event.getTouches()) {
 		auto normpos = normalise(touch.getPos());
 		this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 
-		#ifdef TOUCH_POINTS
-			if (this->touchPointManRef) this->touchPointManRef->remove(touch.getId());
-		#endif
+#ifdef TOUCH_POINTS
+		if (this->touchPointManRef) this->touchPointManRef->remove(touch.getId());
+#endif
 	}
 }
 
-void TouchBroadcastApp::mouseDown( MouseEvent event )
+void TouchBroadcastApp::mouseDown(MouseEvent event)
 {
 	if (!this->bMouseEnabled) return;
 
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchDown(normpos.x, normpos.y);
 
-	#ifdef TOUCH_POINTS
-		if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
-	#endif
+#ifdef TOUCH_POINTS
+	if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
+#endif
 }
 
-void TouchBroadcastApp::mouseDrag( MouseEvent event )
+void TouchBroadcastApp::mouseDrag(MouseEvent event)
 {
 	if (!this->bMouseEnabled) return;
 
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchMove(normpos.x, normpos.y);
 
-	#ifdef TOUCH_POINTS
-		if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
-	#endif
+#ifdef TOUCH_POINTS
+	if (this->touchPointManRef) this->touchPointManRef->update(0, event.getPos());
+#endif
 }
 
-void TouchBroadcastApp::mouseUp( MouseEvent event )
+void TouchBroadcastApp::mouseUp(MouseEvent event)
 {
 	if (!this->bMouseEnabled) return;
 
 	auto normpos = normalise(event.getPos());
 	this->eventToTuioRef->touchUp(normpos.x, normpos.y);
 
-	#ifdef TOUCH_POINTS
-		if (this->touchPointManRef) this->touchPointManRef->remove(0);
-	#endif
+#ifdef TOUCH_POINTS
+	if (this->touchPointManRef) this->touchPointManRef->remove(0);
+#endif
 }
 
-void TouchBroadcastApp::keyDown( KeyEvent event )
+void TouchBroadcastApp::keyDown(KeyEvent event)
 {
-	if( event.getChar() == 'f' ) {
+	if (event.getChar() == 'f') {
 		setFullScreen(!isFullScreen());
 		updateHelpText();
 	}
 
-  if( event.getChar() == 't' ) {
-    getWindow()->setAlwaysOnTop(!getWindow()->isAlwaysOnTop());
+	if (event.getChar() == 't') {
+		getWindow()->setAlwaysOnTop(!getWindow()->isAlwaysOnTop());
 		updateHelpText();
-  }
+	}
 
-	if( event.getChar() == 'h' ) {
+	if (event.getChar() == 'h') {
 		bDrawHelp = !bDrawHelp;
 		updateHelpText();
 	}
@@ -263,24 +265,24 @@ void TouchBroadcastApp::update() {
 void TouchBroadcastApp::draw()
 {
 	gl::enableAlphaBlending();
-	gl::clear( Color( 0.1f, 0.1f, 0.1f ) );
+	gl::clear(Color(0.1f, 0.1f, 0.1f));
 
-	#ifdef TOUCH_POINTS
-		if (this->touchPointManRef) this->touchPointManRef->draw();
-	#endif
+#ifdef TOUCH_POINTS
+	if (this->touchPointManRef) this->touchPointManRef->draw();
+#endif
 
 	// draw yellow circles at the active touch points
-	gl::color( Color( 1, 1, 0 ) );
-	for( const auto &touch : getActiveTouches() )
-		gl::drawStrokedCircle( touch.getPos(), 20 );
+	gl::color(Color(1, 1, 0));
+	for (const auto &touch : getActiveTouches())
+		gl::drawStrokedCircle(touch.getPos(), 20);
 
 
 	if (bDrawHelp) this->helpText.draw();
 }
 
 void TouchBroadcastApp::updateHelpText() {
-	this->helpText.setPos(ci::vec2(10,10));
-	this->helpText.setScale(ci::vec2(1,1));
+	this->helpText.setPos(ci::vec2(10, 10));
+	this->helpText.setScale(ci::vec2(1, 1));
 	this->helpText.setFontSize(20);
 
 	std::stringstream ss;
@@ -298,4 +300,4 @@ void TouchBroadcastApp::updateHelpText() {
 
 	this->helpText.setText(ss.str());
 }
-CINDER_APP( TouchBroadcastApp, RendererGl, prepareSettings )
+CINDER_APP(TouchBroadcastApp, RendererGl, prepareSettings)
