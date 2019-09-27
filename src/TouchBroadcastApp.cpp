@@ -13,11 +13,16 @@
 #include "EventToTuio.h"
 #include "Text.h"
 
+#include "dwmapi.h"
+#include <string>
+
 #define TOUCH_POINTS
 
 #ifdef TOUCH_POINTS
 #include "TouchPoint.h"
 #endif
+
+#pragma comment(lib, "dwmapi.lib")
 
 using namespace ci;
 using namespace ci::app;
@@ -43,7 +48,7 @@ public:
 	void updateHelpText();
 
 private:
-
+	void setAlphaWindow(int alpha);
 	vec2 normalise(const vec2& vec);
 
 	std::shared_ptr<EventToTuio> eventToTuioRef;
@@ -52,6 +57,8 @@ private:
 #ifdef TOUCH_POINTS
 	std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
 #endif
+
+	bool bTransparentWindow = false;
 
 	std::string destinationHost = "127.0.0.1";
 	uint16_t destinationPort = 3333;
@@ -73,6 +80,8 @@ void prepareSettings(TouchBroadcastApp::Settings *settings)
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
 	settings->setMultiTouchEnabled(true);
 	settings->setAlwaysOnTop(true);
+
+
 	// settings->setDisplay( ci::Display::getDisplays()[0] );
 	// On mobile, if you disable multitouch then touch events will arrive via mouseDown(), mouseDrag(), etc.
 	//	settings->setMultiTouchEnabled( false );
@@ -98,6 +107,7 @@ void TouchBroadcastApp::setup()
 					<< "  -i, --ip <ip>\t Set Destination IP address" << std::endl
 					<< "  -p, --port <port>\tSet Destination Port" << std::endl
 					<< "  -l, --local-port <port>\tSet Local Port" << std::endl
+					<< "  -t, --transparent <tranparent>\tSet Transparent window" << std::endl
 					<< std::endl;
 				if (args.size() == 2) {
 					quit();
@@ -119,7 +129,10 @@ void TouchBroadcastApp::setup()
 				i++;
 				destinationPort = std::atoi(args[i].c_str());
 			}
-
+			else if (arg == "-t" || arg == "--transparent") {
+				i++;
+				cout << "Transparent " << args[i].c_str() << endl;
+			}
 			else if (i == 1) {
 				destinationHost = arg;
 			}
@@ -148,8 +161,20 @@ void TouchBroadcastApp::setup()
 	// #endif
 
 	setFullScreen(true);
-
+	this->getWindow()->setBorderless(true);
 	this->updateHelpText();
+
+	if (bTransparentWindow == true) {
+		setAlphaWindow(1);
+	}
+}
+
+void TouchBroadcastApp::setAlphaWindow(int alpha) {
+	//set transparent window
+	HWND hWnd = (HWND)this->getWindow()->getNative();
+	SetWindowLong(hWnd, GWL_EXSTYLE,
+	GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_LAYERED);
+	SetLayeredWindowAttributes(hWnd, 0, alpha, LWA_ALPHA);
 }
 
 vec2 TouchBroadcastApp::normalise(const vec2& vec) {
@@ -255,6 +280,16 @@ void TouchBroadcastApp::keyDown(KeyEvent event)
 		this->bMouseEnabled = !this->bMouseEnabled;
 		updateHelpText();
 	}
+
+	if (event.getChar() == '1') {
+		setAlphaWindow(1);
+	}
+	if (event.getChar() == '2') {
+		setAlphaWindow(127);
+	}
+	if (event.getChar() == '3') {
+		setAlphaWindow(255);
+	}
 }
 
 void TouchBroadcastApp::update() {
@@ -264,7 +299,7 @@ void TouchBroadcastApp::update() {
 
 void TouchBroadcastApp::draw()
 {
-	gl::enableAlphaBlending();
+	//gl::enableAlphaBlending();
 	gl::clear(Color(0.1f, 0.1f, 0.1f));
 
 #ifdef TOUCH_POINTS
