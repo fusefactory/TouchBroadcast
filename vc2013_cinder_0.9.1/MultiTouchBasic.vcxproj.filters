@@ -87,5 +87,9 @@
     <ClCompile Include="..\lib\TUIO11_CPP\oscpack\ip\win32\NetworkingUtils.cpp">
       <Filter>OSC</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\EventToTuio.cpp" />
+    <ClCompile Include="..\src\Text.cpp" />
+    <ClCompile Include="..\src\TouchBroadcastApp.cpp" />
+    <ClCompile Include="..\src\TouchPoint.cpp" />
   </ItemGroup>
 </Project>
