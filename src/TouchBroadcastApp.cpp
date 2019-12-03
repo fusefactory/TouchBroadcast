@@ -28,13 +28,14 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-static string VERSION = "0.2.0";
+static string VERSION = "0.2.1";
 
-void prepareSettings(App::Settings *settings){
+void prepareSettings(App::Settings* settings) {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
 	settings->setMultiTouchEnabled(true);
 	settings->setAlwaysOnTop(true);
+	settings->getDisplay()->getWidth();
 }
 
 class TouchBroadcastApp : public App {
@@ -53,6 +54,7 @@ public:
 	void update() override;
 	void draw() override;
 	void updateHelpText();
+	void setMyFullscreen(bool fullscreen);
 
 private:
 	void setAlphaWindow(int alpha);
@@ -65,7 +67,6 @@ private:
 	std::shared_ptr<TouchPointManager> touchPointManRef = nullptr;
 #endif
 
-	bool bTransparentWindow = false;
 
 	std::string destinationHost = "127.0.0.1";
 	uint16_t destinationPort = 3333;
@@ -79,6 +80,8 @@ private:
 	bool commitOnEvent = true;
 	bool commitAtInterval = false; // TODO
 	bool bMouseEnabled = false;
+	bool bTransparentWindow = false;
+	bool bFullScreen = true;
 };
 
 void TouchBroadcastApp::setup()
@@ -157,7 +160,8 @@ void TouchBroadcastApp::setup()
 	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
 	// #endif
 
-	setFullScreen(true);
+	setMyFullscreen(true);
+	
 	this->updateHelpText();
 
 	if (bTransparentWindow == true) {
@@ -171,8 +175,22 @@ void TouchBroadcastApp::setAlphaWindow(int alpha) {
 	//set transparent window
 	HWND hWnd = (HWND)this->getWindow()->getNative();
 	SetWindowLong(hWnd, GWL_EXSTYLE,
-	GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_LAYERED);
+		GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_LAYERED);
 	SetLayeredWindowAttributes(hWnd, 0, alpha, LWA_ALPHA);
+}
+
+// i don't use setFullscreen() because it broke transparent mode
+void TouchBroadcastApp::setMyFullscreen(bool fullscreen) {
+	this->bFullScreen = fullscreen;
+
+	if (fullscreen) {
+		this->setWindowSize(this->getDisplay()->getWidth(), this->getDisplay()->getHeight());
+		this->setWindowPos(0, 0);
+	}
+	else {
+		this->setWindowSize(500, 500);
+		this->setWindowPos(200, 200);
+	}
 }
 
 vec2 TouchBroadcastApp::normalise(const vec2& vec) {
@@ -254,7 +272,7 @@ void TouchBroadcastApp::mouseUp(MouseEvent event)
 void TouchBroadcastApp::keyDown(KeyEvent event)
 {
 	if (event.getChar() == 'f') {
-		setFullScreen(!isFullScreen());
+		setMyFullscreen(!bFullScreen);
 		updateHelpText();
 	}
 
@@ -290,12 +308,15 @@ void TouchBroadcastApp::keyDown(KeyEvent event)
 
 	if (event.getChar() == '1') {
 		setAlphaWindow(1);
+		updateHelpText();
 	}
 	if (event.getChar() == '2') {
 		setAlphaWindow(127);
+		updateHelpText();
 	}
 	if (event.getChar() == '3') {
 		setAlphaWindow(255);
+		updateHelpText();
 	}
 }
 
@@ -315,7 +336,7 @@ void TouchBroadcastApp::draw()
 
 	// draw yellow circles at the active touch points
 	gl::color(Color(1, 1, 0));
-	for (const auto &touch : getActiveTouches())
+	for (const auto& touch : getActiveTouches())
 		gl::drawStrokedCircle(touch.getPos(), 20);
 
 
@@ -333,7 +354,7 @@ void TouchBroadcastApp::updateHelpText() {
 	std::stringstream ss;
 	ss << "TouchBroadcast"
 		<< "\n============="
-		<< "\nF - toggle fullscreen (" << (isFullScreen() ? "ON" : "OFF") << ")"
+		<< "\nF - toggle fullscreen (" << (bFullScreen ? "ON" : "OFF") << ")"
 		<< "\nT - toggle always-on-top (" << (getWindow()->isAlwaysOnTop() ? "ON" : "OFF") << ")"
 		<< "\nV - toggle visualisation (" << (this->touchPointManRef ? "ON" : "OFF") << ")"
 		<< "\nM - toggle mouse enabled (" << (this->bMouseEnabled ? "ON" : "OFF") << ")"
