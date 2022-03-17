@@ -28,7 +28,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-static string VERSION = "0.2.1";
+static string VERSION = "0.2.2";
 
 void prepareSettings(App::Settings* settings) {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
@@ -82,6 +82,9 @@ private:
 	bool bMouseEnabled = false;
 	bool bTransparentWindow = false;
 	bool bFullScreen = true;
+
+	ci::Timer timer;
+
 };
 
 void TouchBroadcastApp::setup()
@@ -149,6 +152,8 @@ void TouchBroadcastApp::setup()
 				std::cout << "unknown argument: " << arg << std::endl;
 			}
 		}
+
+		timer.start();
 	}
 
 	CI_LOG_I("Initialising TuioServer...");
@@ -321,6 +326,10 @@ void TouchBroadcastApp::keyDown(KeyEvent event)
 }
 
 void TouchBroadcastApp::update() {
+	if (this->bFullScreen && timer.getSeconds() > 5) {
+		setMyFullscreen(true);
+		timer.start();
+	}
 	this->eventToTuioRef->update();
 	// this->tuioServerRef->setDimension(getWindowWidth(), getWindowHeight());
 }
