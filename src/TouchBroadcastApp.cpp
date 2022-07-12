@@ -28,14 +28,13 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-static string VERSION = "0.2.2";
+static string VERSION = "0.2.3";
 
 void prepareSettings(App::Settings* settings) {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
 	// You enable multi-touch from the SettingsFn that fires before the app is constructed.
 	settings->setMultiTouchEnabled(true);
-	settings->setAlwaysOnTop(true);
-	settings->getDisplay()->getWidth();
+	//settings->setAlwaysOnTop(true); not working here
 }
 
 class TouchBroadcastApp : public App {
@@ -54,7 +53,7 @@ public:
 	void update() override;
 	void draw() override;
 	void updateHelpText();
-	void setMyFullscreen(bool fullscreen);
+	void setMyFullscreen(bool fullscreen, bool transparent);
 
 private:
 	void setAlphaWindow(int alpha);
@@ -165,13 +164,15 @@ void TouchBroadcastApp::setup()
 	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
 	// #endif
 
-	setMyFullscreen(true);
+	setMyFullscreen(true, bTransparentWindow);
 	
 	this->updateHelpText();
 
 	if (bTransparentWindow == true) {
 		setAlphaWindow(1);
 	}
+
+	getWindow()->setAlwaysOnTop(true);
 
 	//set version text
 }
@@ -185,14 +186,23 @@ void TouchBroadcastApp::setAlphaWindow(int alpha) {
 }
 
 // i don't use setFullscreen() because it broke transparent mode
-void TouchBroadcastApp::setMyFullscreen(bool fullscreen) {
+// without using setFullscreen() the window size doesn't fit all the screen
+// with setFullscreen() transparent windows doesn't work
+void TouchBroadcastApp::setMyFullscreen(bool fullscreen, bool transparent) {
 	this->bFullScreen = fullscreen;
 
-	if (fullscreen) {
+	if (fullscreen && transparent) {
+		//this can be improved
+
+		setFullScreen(false);
 		this->setWindowSize(this->getDisplay()->getWidth(), this->getDisplay()->getHeight());
 		this->setWindowPos(0, 0);
 	}
-	else {
+	else if (fullscreen && !transparent) {
+		setFullScreen(true);
+	}
+	else if(! fullscreen) {
+		setFullScreen(false);
 		this->setWindowSize(500, 500);
 		this->setWindowPos(200, 200);
 	}
@@ -277,7 +287,7 @@ void TouchBroadcastApp::mouseUp(MouseEvent event)
 void TouchBroadcastApp::keyDown(KeyEvent event)
 {
 	if (event.getChar() == 'f') {
-		setMyFullscreen(!bFullScreen);
+		setMyFullscreen(!bFullScreen, bTransparentWindow);
 		updateHelpText();
 	}
 
@@ -327,7 +337,7 @@ void TouchBroadcastApp::keyDown(KeyEvent event)
 
 void TouchBroadcastApp::update() {
 	if (this->bFullScreen && timer.getSeconds() > 5) {
-		setMyFullscreen(true);
+		setMyFullscreen(true, bTransparentWindow);
 		timer.start();
 	}
 	this->eventToTuioRef->update();
