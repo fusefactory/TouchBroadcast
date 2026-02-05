@@ -27,8 +27,10 @@
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+using namespace osc;
 
-static string VERSION = "0.2.3";
+
+static string VERSION = "0.2.4";
 
 void prepareSettings(App::Settings* settings) {
 	// By default, multi-touch is disabled on desktop and enabled on mobile platforms.
@@ -69,6 +71,11 @@ private:
 
 	std::string destinationHost = "127.0.0.1";
 	uint16_t destinationPort = 3333;
+	uint16_t tableMainPort = 7400;
+	std::shared_ptr<TUIO::UdpSender> sender; //using tuio udp sender to add osc capabilities for keyboard controls
+	osc::OutboundPacketStream* oscPacket;
+	char* oscBuffer;
+
 	uint16_t localPort = 10000;
 	vector<string> cmdArgs;
 	Text helpText, versionText;
@@ -108,6 +115,7 @@ void TouchBroadcastApp::setup()
 					<< "  -p, --port <port>\tSet Destination Port" << std::endl
 					<< "  -l, --local-port <port>\tSet Local Port" << std::endl
 					<< "  -t, --transparent \t Set window transparent" << std::endl
+					<< "  -0, --start media library / close media library \t Set window transparent" << std::endl
 					<< std::endl;
 				if (args.size() == 2) {
 					quit();
@@ -135,6 +143,12 @@ void TouchBroadcastApp::setup()
 				bTransparentWindow = true;
 			}
 
+			//starts 
+			else if (i == 0) {
+				destinationHost = arg;
+			}
+
+
 			else if (i == 1) {
 				destinationHost = arg;
 			}
@@ -159,7 +173,11 @@ void TouchBroadcastApp::setup()
 	this->tuioServerRef = std::make_shared<TUIO::TuioServer>(destinationHost.c_str(), destinationPort);
 	this->tuioServerRef->setSourceName("TouchBroadcast");
 	this->eventToTuioRef = std::make_shared<EventToTuio>(this->tuioServerRef);
+	int size = 128;
+	oscBuffer = new char[size];
+	oscPacket = new osc::OutboundPacketStream(oscBuffer, size);
 
+	this->sender = std::make_shared<TUIO::UdpSender>(destinationHost.c_str(), tableMainPort);
 	// #ifdef TOUCH_POINTS
 	// 	if (this->touchPointManRef) this->touchPointManRef = std::make_shared<TouchPointManager>();
 	// #endif
@@ -322,17 +340,25 @@ void TouchBroadcastApp::keyDown(KeyEvent event)
 	}
 
 	if (event.getChar() == '1') {
-		setAlphaWindow(1);
-		updateHelpText();
+		oscPacket->Clear();
+
+		(*oscPacket) << osc::BeginBundleImmediate;
+		(*oscPacket) << osc::BeginMessage("/control/app") << 10 << osc::EndMessage;
+		(*oscPacket) << osc::EndBundle;
+
+		this->sender->sendOscPacket(oscPacket);
 	}
+
 	if (event.getChar() == '2') {
-		setAlphaWindow(127);
-		updateHelpText();
+		oscPacket->Clear();
+
+		(*oscPacket) << osc::BeginBundleImmediate;
+		(*oscPacket) << osc::BeginMessage("/control/app") << 1 << osc::EndMessage;
+		(*oscPacket) << osc::EndBundle;
+
+		this->sender->sendOscPacket(oscPacket);
 	}
-	if (event.getChar() == '3') {
-		setAlphaWindow(255);
-		updateHelpText();
-	}
+
 }
 
 void TouchBroadcastApp::update() {
